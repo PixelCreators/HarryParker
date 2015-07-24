@@ -3,10 +3,10 @@
 [RequireComponent(typeof (Rigidbody2D))]
 public class CharacterMotor : MonoBehaviour
 {
-    public float Speed;
     private Rigidbody2D _rigidbody;
+    public float Speed;
 
-    void Awake()
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine.Networking;
+﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public class DecisionMessage : MessageBase
 {
@@ -12,6 +13,6 @@ public class DecisionMessage : MessageBase
 
     public override void Deserialize(NetworkReader reader)
     {
-        reader.ReadString().Split('\n');
+        Decisions = reader.ReadString().Split('\n');
     }
 }

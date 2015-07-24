@@ -14,6 +14,6 @@ public class CharacterMotor : MonoBehaviour
     private void Update()
     {
         var direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        _rigidbody.velocity = direction*Speed;
+        _rigidbody.velocity = direction.normalized*Speed;
     }
 }

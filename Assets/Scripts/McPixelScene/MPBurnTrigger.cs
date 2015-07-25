@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
-
-public class KickMPTrigger : MonoBehaviour 
+public class MPBurnTrigger : MonoBehaviour 
 {
-    bool PlayerInBound = false;
-    public MPAI MP;
+    private bool PlayerInBound = false;
+    public MPAI McPixel;
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Tooltip.Show("Kopnij");
+            Tooltip.Show("Zapal");
             PlayerInBound = true;
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
+    private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
@@ -23,11 +22,12 @@ public class KickMPTrigger : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
-            MP.GetKicked();
+            McPixel.BurnHotdog();
             gameObject.SetActive(false);
         }
-    }}
+    }
+}

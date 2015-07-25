@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 434822}
   - 212: {fileID: 21222120}
   - 61: {fileID: 6189560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ULWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - 4: {fileID: 405178}
   - 212: {fileID: 21205020}
   - 61: {fileID: 6193736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - 4: {fileID: 436804}
   - 212: {fileID: 21258532}
   - 61: {fileID: 6102214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: URWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - 4: {fileID: 462660}
   - 212: {fileID: 21294972}
   - 61: {fileID: 6148118}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

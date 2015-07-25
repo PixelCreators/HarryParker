@@ -19,7 +19,6 @@ public class CameraControler : MonoBehaviour
 
     public static void MoveTo(Vector3 position)
     {
-        Debug.Log("MoveTo: " + position);
         _instance.StartCoroutine(_instance.MoveToCoroutine(position));
     }
 

@@ -1167,6 +1167,12 @@ MonoBehaviour:
     - Nacisnij przycisk
     - Kopnij McPixela
     - Zapal Hotdoga pokoju
+  - Name: Witcher
+    Description: "Wied\u017Amin chce..."
+    Options:
+    - "...wych\u0119do\u017Cy\u0107 Rud\u0105"
+    - "...wych\u0119do\u017Cy\u0107 Czarn\u0105"
+    - "...wych\u0119dorzy\u0107 "
 --- !u!114 &805434913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2724,6 +2730,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1670541441}
+  - 114: {fileID: 1670541442}
   m_Layer: 0
   m_Name: Witcher
   m_TagString: Untagged
@@ -2744,6 +2751,18 @@ Transform:
   - {fileID: 1883196895}
   m_Father: {fileID: 1250908803}
   m_RootOrder: 2
+--- !u!114 &1670541442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1670541440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1530436d17a16564b9bfc5b2f4e1d29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 5
 --- !u!1 &1687753511
 GameObject:
   m_ObjectHideFlags: 0

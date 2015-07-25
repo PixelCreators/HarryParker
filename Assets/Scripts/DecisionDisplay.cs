@@ -51,6 +51,7 @@ public class DecisionDisplay : MonoBehaviour
             var option = _instance.Decisions[decisionId].Options[i];
             var newButton = Instantiate(_instance.ButtonPrefab);
             newButton.GetComponent<DecisionButton>().Init(option, i);
+            newButton.transform.SetParent(_instance.ButtonPanel);
             _instance.activeButtons.Add(newButton);
             _instance.gameObject.SetActive(true);
         }

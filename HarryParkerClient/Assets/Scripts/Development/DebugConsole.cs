@@ -12,9 +12,13 @@ public class DebugConsole : MonoBehaviour
     private Text _text;
 
     private int k = 0;
-    public void Start()
+    public void Awake()
     {
         Instance = this;
+    }
+
+    public void Start()
+    {
         _text = GetComponent<Text>();
         _outputConsole = new string[LinesNumber];
 

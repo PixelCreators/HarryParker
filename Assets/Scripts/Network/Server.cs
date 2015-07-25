@@ -40,8 +40,23 @@ public class Server : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            string[] msg = new string[1];
+            string[] msg = new string[5];
             msg[0] = "Test message";
+            msg[1] = "Option 1";
+            msg[2] = "Option 2";
+            msg[3] = "Option 3";
+            msg[4] = "Option 4";
+            SendDecisionText(msg);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            string[] msg = new string[5];
+            msg[0] = "Test message 2 ";
+            msg[1] = "Option 2 1";
+            msg[2] = "Option 2 2";
+            msg[3] = "Option 2 3";
+            msg[4] = "Option 2 4";
             SendDecisionText(msg);
         }
     }

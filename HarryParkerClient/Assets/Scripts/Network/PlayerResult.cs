@@ -4,7 +4,7 @@ public class PlayerResult : MessageBase
 {
     public int Result;
     public bool JustDoIt;
-    public int PlayerID;
+    public long PlayerID; 
 
     public override void Serialize(NetworkWriter writer)
     {
@@ -17,6 +17,6 @@ public class PlayerResult : MessageBase
     {
         Result = reader.ReadInt32();
         JustDoIt = reader.ReadBoolean();
-        PlayerID = reader.ReadInt32();
+        PlayerID = reader.ReadInt64();
     }
 }

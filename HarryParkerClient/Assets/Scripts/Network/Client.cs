@@ -2,32 +2,45 @@
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+public class MyMsgTypes
+{
+    public static short Decision = 1001;
+    public static short PlayerResult = 1002;
+};
+
 public class Client : MonoBehaviour
 {
-    NetworkClient _networkClient;
-    public InputField IPInputField;
+    public static Client Instance;
+    public NetworkClient NetworkClient;
+    private InputField IPInputField;
 
-    public class MyMsgTypes
+    
+    void Awake()
     {
-        public static short Decision = 1001;
-        public static short PlayerResult = 1002;
-    };
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
-        _networkClient = new NetworkClient();
-	}
+        Application.targetFrameRate = 30;
+        NetworkClient = new NetworkClient();
+        IPInputField = FindObjectOfType<InputField>();
+    }
 
     public void Connect()
     {
-        ///sdf
-
-        DebugConsole.Instance.PrintString("DupaDebug");
+        DebugConsole.Instance.PrintString("Trying to connect with server");
         var ip = IPInputField.text;
-        _networkClient.Connect(ip, 1337);
-        _networkClient.RegisterHandler(MsgType.Connect, OnConnected);
-        _networkClient.RegisterHandler(MsgType.Error, OnError);
-        _networkClient.RegisterHandler(MyMsgTypes.Decision, ShowMessage);
+        NetworkClient.Connect(ip, 1337);
+        NetworkClient.RegisterHandler(MsgType.Connect, OnConnected);
+        NetworkClient.RegisterHandler(MsgType.Error, OnError);
+        NetworkClient.RegisterHandler(MyMsgTypes.Decision, GetMessage);
+        Application.LoadLevel("DecisionScene");
     }
 
     public void OnConnected(NetworkMessage netMsg)
@@ -40,27 +53,10 @@ public class Client : MonoBehaviour
         DebugConsole.Instance.PrintString("Error");
     }
 
-    public void ShowMessage(NetworkMessage netMsg)
+    public void GetMessage(NetworkMessage netMsg)
     {
-        var beginMessage = netMsg.ReadMessage<DecisionMessage>();
-        DebugConsole.Instance.PrintString(beginMessage.Decisions[0]);
+        FindObjectOfType<ResultManager>().GetMessage(netMsg);
     }
 	
-    public void SendMessage(PlayerResult msg)
-    {
-        _networkClient.Send(MyMsgTypes.PlayerResult, msg);
-    }
 
-	void Update ()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            PlayerResult pr = new PlayerResult();
-            pr.JustDoIt = true;
-            pr.Result = 2;
-            pr.PlayerID = 1;
-            SendMessage(pr);
-        }
-
-	}
 }

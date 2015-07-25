@@ -28,14 +28,6 @@ public class CharacterMotor : MonoBehaviour
         _attack = GetComponent<PlayerAttack>();
     }
 
-    private bool IsHighest(float val, Vector2 vec)
-    {
-        return val >= vec.x &&
-               val >= vec.y &&
-               val >= -vec.x &&
-               val >= -vec.y;
-    }
-
     private Vector2 lastDirection;
 
     private void Update()
@@ -53,32 +45,16 @@ public class CharacterMotor : MonoBehaviour
         {
             lastDirection = direction;
         }
-        if (!_attack.IsShooting)
+        //if (!_attack.IsShooting)
         {
             _rigidbody.velocity = direction.normalized*Speed*TimeManager.TimeMultiplier;
         }
-        else
-        {
-            _rigidbody.velocity = Vector2.zero;
-        }
+        //else
+        //{
+        //    _rigidbody.velocity = Vector2.zero;
+        //}
 
-        if (IsHighest(lastDirection.x, lastDirection))
-        {
-            CurrentDirection = Direction.Right;
-        }
-        else if (IsHighest(lastDirection.y, lastDirection))
-        {
-            CurrentDirection = Direction.Up;
-        }
-        else if (IsHighest(-lastDirection.x, lastDirection))
-        {
-            CurrentDirection = Direction.Left;
-        }
-        else if (IsHighest(-lastDirection.y, lastDirection))
-        {
-            CurrentDirection = Direction.Down;
-        }
-
+        CurrentDirection = DirectionHelper.VecToDirection(lastDirection);
         MovementAnimator.SetInteger("Direction", (int)CurrentDirection);
         MovementAnimator.SetBool("Running", direction.magnitude != 0 && !_attack.IsShooting && TimeManager.TimeMultiplier != 0);
         MovementAnimator.SetBool("Shooting", _attack.IsShooting && TimeManager.TimeMultiplier != 0);

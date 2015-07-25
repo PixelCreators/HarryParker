@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 257062}
   - 61: {fileID: 257063}
+  - 114: {fileID: 257064}
   m_Layer: 0
   m_Name: ChaseTrigger
   m_TagString: Untagged
@@ -128,6 +129,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 9.57999992, y: 1.66999996}
+--- !u!114 &257064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3483fd8738c3e6408d5d6769d03beff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hulk: {fileID: 977774861}
 --- !u!1 &56032793
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,60 +324,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .00999999978, y: .00999999978}
---- !u!1 &202395505
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 202395506}
-  - 212: {fileID: 202395507}
-  m_Layer: 12
-  m_Name: New Sprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &202395506
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 202395505}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.5999999, y: 42.6199989, z: 1}
-  m_Children: []
-  m_Father: {fileID: 977774855}
-  m_RootOrder: 1
---- !u!212 &202395507
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 202395505}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b16de82d0378dc4bad0ad9f0ec53734, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &212829696
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +333,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 212829698}
   - 212: {fileID: 212829697}
+  - 95: {fileID: 212829699}
   m_Layer: 12
   m_Name: HulkGraphic
   m_TagString: Untagged
@@ -405,8 +365,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b16de82d0378dc4bad0ad9f0ec53734, type: 3}
-  m_Color: {r: 0, g: .345588207, b: .0452840179, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a713f8d3f2220db4d93b62bd59c72fa2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &212829698
 Transform:
   m_ObjectHideFlags: 0
@@ -415,10 +375,27 @@ Transform:
   m_GameObject: {fileID: 212829696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 64, y: 64, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 977774855}
   m_RootOrder: 0
+--- !u!95 &212829699
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 212829696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 05184bd7f4a59044dba4bf8644020bf2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &216756890
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +483,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 261360649}
   - 61: {fileID: 261360650}
+  - 114: {fileID: 261360651}
   m_Layer: 0
   m_Name: StealTrigger
   m_TagString: Untagged
@@ -538,6 +516,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.97000003, y: 1.66999996}
+--- !u!114 &261360651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 261360648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe261c8e6d8e0b42905e7aa76cee32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hulk: {fileID: 977774861}
+  Encounter: {fileID: 1432603139}
 --- !u!1 &338913053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1032,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 853881109}
   - 114: {fileID: 853881110}
+  - 114: {fileID: 853881111}
   m_Layer: 0
   m_Name: HulkRoom
   m_TagString: Untagged
@@ -1080,6 +1072,18 @@ MonoBehaviour:
   HulkKickTrigger: {fileID: 1375877789}
   HulkHugTrigger: {fileID: 1353350198}
   StealHulksIceCreamTrigger: {fileID: 261360648}
+--- !u!114 &853881111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 853881108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f78c92250e1e81a4b8accccbe0e90554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Door: {fileID: 1130278073}
 --- !u!1 &858903180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1247,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 212829698}
-  - {fileID: 202395506}
+  - {fileID: 1384228595}
   m_Father: {fileID: 1250908803}
   m_RootOrder: 0
 --- !u!114 &977774856
@@ -1257,6 +1261,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380c38cbfd90a034d9eef44a64e8f95b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ColliderSize: .639999986
+  IsRushing: 0
+  KillOnContact: 1
+  MaxRushTime: 2
+  RushAnimator: {fileID: 212829699}
+  RushSpeed: 7
   SpeedUpCurve:
     serializedVersion: 2
     m_Curve:
@@ -1272,13 +1282,8 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-  IsRushing: 0
-  KillOnContact: 1
-  WallContact: 0
-  RushSpeed: 7
-  MaxRushTime: 2
   SpeedUpTime: .300000012
-  ColliderSize: .639999986
+  WallContact: 0
 --- !u!61 &977774857
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1319,7 +1324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1530436d17a16564b9bfc5b2f4e1d29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
+  HP: 2
 --- !u!82 &977774860
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1400,7 +1405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb53a971cc1a9ea4396da67036d0d0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SmashScream: {fileID: 0}
+  AnimationHolder: {fileID: 212829696}
+  DeadSprite: {fileID: 1384228594}
 --- !u!1 &1005643379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1566,7 @@ RectTransform:
   - {fileID: 805434911}
   - {fileID: 826974235}
   - {fileID: 943426402}
+  - {fileID: 1432603138}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
@@ -1567,6 +1574,10 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1130278073 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 106994, guid: 4d21864b52e30ad4598637a3ccca97ec, type: 2}
+  m_PrefabInternal: {fileID: 557743533}
 --- !u!1 &1209004388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1850,136 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
+--- !u!1 &1384228594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1384228595}
+  - 212: {fileID: 1384228596}
+  m_Layer: 12
+  m_Name: DeadSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1384228595
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1384228594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 977774855}
+  m_RootOrder: 1
+--- !u!212 &1384228596
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1384228594}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 5a4aae42edb176c44bd1ff91a969f14a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &1432603137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1432603138}
+  - 222: {fileID: 1432603141}
+  - 114: {fileID: 1432603140}
+  - 114: {fileID: 1432603139}
+  m_Layer: 5
+  m_Name: IceCreamEncounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1432603138
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432603137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1032256120}
+  m_RootOrder: 3
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -59, y: -148}
+  m_SizeDelta: {x: 31.9400005, y: 100}
+  m_Pivot: {x: .5, y: 0}
+--- !u!114 &1432603139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432603137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88013333e6ace447a6b13326bfb79ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressBar: {fileID: 1432603138}
+  duration: 15
+  Hulk: {fileID: 977774861}
+--- !u!114 &1432603140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432603137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1432603141
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432603137}
 --- !u!1 &1446585452
 GameObject:
   m_ObjectHideFlags: 0

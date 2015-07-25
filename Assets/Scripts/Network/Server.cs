@@ -30,8 +30,9 @@ public class Server : MonoBehaviour
         JustDoIt = true;
         NetworkServer.Listen(1337);
 
-        if(NetworkServer.active)
-            DebugConsole.Instance.PrintString("Server started");
+        if (NetworkServer.active)
+            Debug.Log("Server started");
+            //DebugConsole.Instance.PrintString("Server started");
 
         NetworkServer.RegisterHandler(MyMsgTypes.PlayerResult, GetPlayerResult);
     }
@@ -39,7 +40,8 @@ public class Server : MonoBehaviour
     public void GetPlayerResult(NetworkMessage msg)
     {
         var pr = msg.ReadMessage<PlayerResult>();
-        DebugConsole.Instance.PrintString("JustDoIT: " + pr.JustDoIt.ToString() + "Result: " + pr.Result.ToString() + "PlayerNumber: " + pr.PlayerID.ToString());
+        Debug.Log("JustDoIT: " + pr.JustDoIt.ToString() + "Result: " + pr.Result.ToString() + "PlayerNumber: " + pr.PlayerID.ToString());
+        //DebugConsole.Instance.PrintString("JustDoIT: " + pr.JustDoIt.ToString() + "Result: " + pr.Result.ToString() + "PlayerNumber: " + pr.PlayerID.ToString());
     }
 
     public void SendDecisionText(DecisionMessage msg)

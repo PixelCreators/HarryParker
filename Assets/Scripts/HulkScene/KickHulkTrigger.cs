@@ -28,6 +28,7 @@ public class KickHulkTrigger : MonoBehaviour
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
             Hulk.SMAAAAAAAAAAAAAAASH(); 
+            gameObject.SetActive(false);
         }
     }
 }

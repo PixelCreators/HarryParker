@@ -5,14 +5,17 @@ public class MyMsgTypes
 {
     public static short Decision = 1001;
     public static short PlayerResult = 1002;
+    public static short EndVoting = 1003;
 };
 
 
 public class Server : MonoBehaviour
 {
+    public bool JustDoIt;
 
     void Start()
     {
+        JustDoIt = true;
         NetworkServer.Listen(1337);
 
         if(NetworkServer.active)
@@ -36,13 +39,40 @@ public class Server : MonoBehaviour
         NetworkServer.SendToAll(MyMsgTypes.Decision, msg);
     }
 
+    void EndVoting()
+    {
+        EndVotingMessage msg = new EndVotingMessage();
+        msg.isJustDoIt = JustDoIt;
+        NetworkServer.SendToAll(MyMsgTypes.EndVoting, msg);
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            string[] msg = new string[1];
+            string[] msg = new string[5];
             msg[0] = "Test message";
+            msg[1] = "Option 1";
+            msg[2] = "Option 2";
+            msg[3] = "Option 3";
+            msg[4] = "Option 4";
             SendDecisionText(msg);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            string[] msg = new string[5];
+            msg[0] = "Test message 2 ";
+            msg[1] = "Option 2 1";
+            msg[2] = "Option 2 2";
+            msg[3] = "Option 2 3";
+            msg[4] = "Option 2 4";
+            SendDecisionText(msg);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            EndVoting();
         }
     }
 }

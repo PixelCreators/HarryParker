@@ -5,6 +5,8 @@ public class MPAI : MonoBehaviour
 {
     public GameObject KickSprite;
     public GameObject IdleSprite;
+    public GameObject ExplodedSprite;
+    public GameObject Hotdog;
     public Transform StoneSprite;
     public GameObject Door;
 
@@ -15,17 +17,47 @@ public class MPAI : MonoBehaviour
 
     private IEnumerator KickPlayer()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.4f);
         IdleSprite.SetActive(false);
         KickSprite.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.7f);
         IdleSprite.SetActive(true);
         KickSprite.SetActive(false);
+        yield return new WaitForSeconds(0.4f);
+        DecisionDisplay.TriggerDecision(1);
+    }
+
+    public void BurnHotdog()
+    {
+        StartCoroutine(HotdogCoroutine());
+    }
+
+    private IEnumerator HotdogCoroutine()
+    {
+        var playerHDPivot = PlayerPosition.HotdogPivot;
+        var hdTrans = Hotdog.transform;
+        var originalPosition = hdTrans.position;
+        Hotdog.SetActive(true);
+        float time = 0.4f;
+        yield return new WaitForSeconds(time);
+        hdTrans.position = playerHDPivot.position;
+        yield return new WaitForSeconds(time);
+        hdTrans.position = originalPosition;
+        yield return new WaitForSeconds(time);
+        hdTrans.position = playerHDPivot.position;
+        yield return new WaitForSeconds(time);
+        hdTrans.position = originalPosition;
+        yield return new WaitForSeconds(time);
+        Hotdog.SetActive(false);
+        IdleSprite.SetActive(false);
+        ExplodedSprite.SetActive(true);
+        FinishLevel();
     }
 
     public void DropStone()
     {
         StoneSprite.gameObject.SetActive(true);
+        StartCoroutine(DropStoneCoroutine());
     }
 
     public float DropTime;
@@ -42,6 +74,11 @@ public class MPAI : MonoBehaviour
             yield return null;
         }
         StoneSprite.position = transform.position;
+        FinishLevel();
+    }
+
+    private void FinishLevel()
+    {
         Door.SetActive(false);
     }
 

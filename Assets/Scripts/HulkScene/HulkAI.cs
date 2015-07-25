@@ -35,6 +35,7 @@ public class HulkAI : MonoBehaviour
     {
         StopSmashing();
         _rush.enabled = false;
+        _rush.WallContact = true;
         HulkEncounter.Finish();
     }
 

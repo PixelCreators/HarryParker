@@ -11,7 +11,19 @@ public class MyMsgTypes
 
 public class Server : MonoBehaviour
 {
+    public static Server Instance;
+
     public bool JustDoIt;
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -22,7 +34,6 @@ public class Server : MonoBehaviour
             DebugConsole.Instance.PrintString("Server started");
 
         NetworkServer.RegisterHandler(MyMsgTypes.PlayerResult, GetPlayerResult);
-
     }
 
     public void GetPlayerResult(NetworkMessage msg)
@@ -31,15 +42,12 @@ public class Server : MonoBehaviour
         DebugConsole.Instance.PrintString("JustDoIT: " + pr.JustDoIt.ToString() + "Result: " + pr.Result.ToString() + "PlayerNumber: " + pr.PlayerID.ToString());
     }
 
-    void SendDecisionText(string[] decMsg)
+    public void SendDecisionText(DecisionMessage msg)
     {
-        DecisionMessage msg = new DecisionMessage();
-        msg.Decisions = decMsg;
-
         NetworkServer.SendToAll(MyMsgTypes.Decision, msg);
     }
 
-    void EndVoting()
+    public void EndVoting()
     {
         EndVotingMessage msg = new EndVotingMessage();
         msg.isJustDoIt = JustDoIt;
@@ -48,31 +56,6 @@ public class Server : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            string[] msg = new string[5];
-            msg[0] = "Test message";
-            msg[1] = "Option 1";
-            msg[2] = "Option 2";
-            msg[3] = "Option 3";
-            msg[4] = "Option 4";
-            SendDecisionText(msg);
-        }
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            string[] msg = new string[5];
-            msg[0] = "Test message 2 ";
-            msg[1] = "Option 2 1";
-            msg[2] = "Option 2 2";
-            msg[3] = "Option 2 3";
-            msg[4] = "Option 2 4";
-            SendDecisionText(msg);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            EndVoting();
-        }
     }
 }

@@ -34,11 +34,6 @@ public class RushAt : MonoBehaviour
             KillOnContact = false;
         }
 
-        if (col.gameObject.CompareTag(Constants.Tags.Player))
-        {
-            Debug.Log(IsRushing);
-        }
-
         if (col.gameObject.layer == Constants.Layers.Walls)
         {
             WallContact = true;

@@ -27,6 +27,14 @@ public class DecisionDisplay : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
+
     public static void TriggerDecision(int decisionId)
     {
         _instance._pendingDecision = decisionId;

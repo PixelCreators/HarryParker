@@ -23,6 +23,14 @@ public class DebugConsole : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
+
     public void PrintString(string text)
     {
         MoveStringsDown();

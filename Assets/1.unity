@@ -102,7 +102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &257062
 Transform:
   m_ObjectHideFlags: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   CurrentDirection: 0
   MovementAnimator: {fileID: 1924273416}
   Speed: 3
+  Dead: 0
 --- !u!50 &56032796
 Rigidbody2D:
   serializedVersion: 2
@@ -511,7 +512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &261360649
 Transform:
   m_ObjectHideFlags: 0
@@ -967,6 +968,7 @@ GameObject:
   - 224: {fileID: 826974235}
   - 222: {fileID: 826974237}
   - 114: {fileID: 826974236}
+  - 114: {fileID: 826974238}
   m_Layer: 5
   m_Name: YouDiedScreen
   m_TagString: Untagged
@@ -1019,6 +1021,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 826974234}
+--- !u!114 &826974238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 826974234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e1444bc5387b4409c542693a7cbb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &853881108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,10 +1076,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decisionId: 0
-  HulkChaseTrigger: {fileID: 0}
+  HulkChaseTrigger: {fileID: 257061}
   HulkKickTrigger: {fileID: 1375877789}
-  HulkHugTrigger: {fileID: 0}
-  StealHulksIceCreamTrigger: {fileID: 0}
+  HulkHugTrigger: {fileID: 1353350198}
+  StealHulksIceCreamTrigger: {fileID: 261360648}
 --- !u!1 &858903180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1530436d17a16564b9bfc5b2f4e1d29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 0
 --- !u!82 &977774860
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1726,13 +1740,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 1353350199}
   - 61: {fileID: 1353350200}
+  - 114: {fileID: 1353350201}
   m_Layer: 0
   m_Name: HugTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1353350199
 Transform:
   m_ObjectHideFlags: 0
@@ -1758,6 +1773,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.97000003, y: 1.66999996}
+--- !u!114 &1353350201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1353350198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4329fc6496e77484b846006e5d328d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hulk: {fileID: 977774861}
 --- !u!1 &1375877789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,7 +1801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1375877790
 Transform:
   m_ObjectHideFlags: 0

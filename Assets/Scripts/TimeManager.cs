@@ -5,8 +5,24 @@ public class TimeManager : MonoBehaviour
 
     private void Awake()
     {
-        DecisionDisplay.DecisionDisplayed += delegate { TimeMultiplier = 0; };
-        DecisionDisplay.DecisionChosen += delegate { TimeMultiplier = 1; };
+        DecisionDisplay.DecisionDisplayed += OnDecisionDisplayed;
+        DecisionDisplay.DecisionChosen += OnDecisionChosen;
         TimeMultiplier = 1;
+    }
+
+    private void OnDecisionChosen(int arg1, int arg2)
+    {
+        TimeMultiplier = 1;
+    }
+
+    private void OnDecisionDisplayed()
+    {
+        TimeMultiplier = 0;
+    }
+
+    private void OnDestroy()
+    {
+        DecisionDisplay.DecisionDisplayed -= OnDecisionDisplayed;
+        DecisionDisplay.DecisionChosen -= OnDecisionChosen; 
     }
 }

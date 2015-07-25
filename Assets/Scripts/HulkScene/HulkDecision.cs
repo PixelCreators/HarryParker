@@ -13,6 +13,11 @@ public class HulkDecision : MonoBehaviour
         DecisionDisplay.DecisionChosen += OnDecisionChosen;
     }
 
+    void OnDestroy()
+    {
+        DecisionDisplay.DecisionChosen -= OnDecisionChosen;
+    }
+
     void OnDecisionChosen(int decisionId, int decision)
     {
         if (this.decisionId != decisionId)

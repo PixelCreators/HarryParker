@@ -12,30 +12,48 @@ public class HulkAI : MonoBehaviour
     private const float _screamChance = 0.5f;
     private float lastRush;
     private const float RushDelay = 1.5f;
-    public AudioSource SmashScream;
+    private AudioSource SmashScream;
+
+    public GameObject AnimationHolder;
+    public GameObject DeadSprite;
 
     private void Awake()
     {
-        GetComponent<Enemy>().Died += delegate { _isSmashing = false; };
+        GetComponent<Enemy>().Died += OnDied;
         _rush = GetComponent<RushAt>();
         SmashScream = GetComponent<AudioSource>();
+    }
+
+    public void StopSmashing()
+    {
+        _isSmashing = false;
+        AnimationHolder.SetActive(false);
+        DeadSprite.SetActive(true);
+    }
+
+    private void OnDied()
+    {
+        StopSmashing();
+        _rush.enabled = false;
+        HulkEncounter.Finish();
     }
 
     public void SMAAAAAAAAAAAAAAASH()
     {
         _isSmashing = true;
+        lastRush = Time.time + RushDelay;
         StartCoroutine(SetDeadlyCoroutine());
+    }
+
+    public void SetInvincible()
+    {
+        GetComponent<Enemy>().SetInvincible();
     }
 
     private IEnumerator SetDeadlyCoroutine()
     {
         yield return new WaitForSeconds(2);
         _rush.KillOnContact = true;
-    }
-
-    private void OnEnable()
-    {
-        lastRush = Time.time + RushDelay*5;
     }
 
     private void Update()

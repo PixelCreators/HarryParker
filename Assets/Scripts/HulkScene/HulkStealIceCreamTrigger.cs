@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 
-public class KickHulkTrigger : MonoBehaviour 
+public class HulkStealIceCreamTrigger : MonoBehaviour 
 {
     bool PlayerInBound = false;
     public HulkAI Hulk;
+    public IceCreamEncounter Encounter;
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Tooltip.Show("Kopnij Hulka");
+            Tooltip.Show("Ukradnij Loda");
             PlayerInBound = true;
         }
     }
@@ -27,8 +28,11 @@ public class KickHulkTrigger : MonoBehaviour
     {
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
-            Hulk.SMAAAAAAAAAAAAAAASH(); 
+            Tooltip.Hide();
+            Hulk.SMAAAAAAAAAAAAAAASH();
+            Encounter.gameObject.SetActive(true);
+            Encounter.enabled = true;
             gameObject.SetActive(false);
         }
-    }
+    } 
 }

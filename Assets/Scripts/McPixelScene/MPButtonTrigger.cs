@@ -9,7 +9,7 @@ public class MPButtonTrigger : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Tooltip.Show("Obraź Hulka");
+            Tooltip.Show("Naciśnij");
             PlayerInBound = true;
         }
     }

@@ -58,12 +58,17 @@ public class DecisionDisplay : MonoBehaviour
 
         DecisionMessage decisionMessage = new DecisionMessage();
 
-        int length = _instance.Decisions.Length + 1;
+        int length = _instance.Decisions[decisionId].Options.Length + 1;
         decisionMessage.Decisions = new string[length];
         decisionMessage.Decisions[0] = _instance.Decisions[decisionId].Description;
         for (int i = 1; i < length; i++)
         {
             decisionMessage.Decisions[i] = _instance.Decisions[decisionId].Options[i - 1];
+        }
+
+        foreach(var dec in decisionMessage.Decisions)
+        {
+            Debug.Log(dec);
         }
 
         Server.Instance.SendDecisionText(decisionMessage);

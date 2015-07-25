@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MyMsgTypes
 {
@@ -12,8 +14,14 @@ public class MyMsgTypes
 public class Server : MonoBehaviour
 {
     public static Server Instance;
-
+    
     public bool JustDoIt;
+
+    List<long> Players;
+
+    int playersVoted;
+    int[] votingOptions;
+    DecisionMessage lastMsg;
 
     void Awake()
     {
@@ -27,7 +35,6 @@ public class Server : MonoBehaviour
 
     void Start()
     {
-        JustDoIt = true;
         NetworkServer.Listen(1337);
 
         if (NetworkServer.active)
@@ -41,12 +48,52 @@ public class Server : MonoBehaviour
     {
         var pr = msg.ReadMessage<PlayerResult>();
         Debug.Log("JustDoIT: " + pr.JustDoIt.ToString() + "Result: " + pr.Result.ToString() + "PlayerNumber: " + pr.PlayerID.ToString());
+
+        playersVoted++;
+        votingOptions[pr.Result]++;
+        JustDoIt = pr.JustDoIt;
         //DebugConsole.Instance.PrintString("JustDoIT: " + pr.JustDoIt.ToString() + "Result: " + pr.Result.ToString() + "PlayerNumber: " + pr.PlayerID.ToString());
+    }
+    
+
+    public IEnumerator Voting()
+    {
+        var numberOfPlayers = NetworkServer.connections.Count - 1;
+        votingOptions = new int[lastMsg.Decisions.Length - 1];
+
+        while (true)
+        {
+            if (playersVoted >= numberOfPlayers)
+            {
+                break;
+            }
+            yield return null;
+        }
+        
+        for(int i = 0; i < lastMsg.Decisions.Length - 1; i++)
+        {
+            Debug.Log(votingOptions[i]);
+            Debug.Log(numberOfPlayers);
+            if(votingOptions[i] == numberOfPlayers)
+            {
+                DecisionDisplay.ChooseDecision(i);
+                yield break;
+            }
+        }
+
+        SendDecisionText(lastMsg);
+        
+        yield return null;
     }
 
     public void SendDecisionText(DecisionMessage msg)
     {
+        lastMsg = msg;
+        playersVoted = 0;
+
         NetworkServer.SendToAll(MyMsgTypes.Decision, msg);
+
+        StartCoroutine(Voting());
     }
 
     public void EndVoting()
@@ -58,6 +105,7 @@ public class Server : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Q))
+            EndVoting();
     }
 }

@@ -62,6 +62,8 @@ public class ResultManager : MonoBehaviour
         Debug.Log(IsJustDoIt);
         if (IsJustDoIt)
             _justDoItPanel.SetActive(true);
+        else
+            SetRandomResult();
     }
 
     IEnumerator Timer(float time)
@@ -82,11 +84,13 @@ public class ResultManager : MonoBehaviour
             if (_sended == true)
             {
                 _timerText.gameObject.SetActive(false);
-                _invisibleButton.gameObject.SetActive(true);
                 break;
             }
         }
         _timerText.text = "0.00";
+
+        if (_send.interactable)
+            SetRandomResult();
     }
 
 
@@ -122,8 +126,12 @@ public class ResultManager : MonoBehaviour
 
     private void SetRandomResult()
     {
-        SetResult(Random.Range(0, _decisions.Length - 1));
-        SendMessage();
+        var answerButtons = FindObjectsOfType<AnswerButton>();
+        
+        var randomButton = answerButtons[Random.Range(0, answerButtons.Length - 1)].GetComponent<Button>();
+        randomButton.Select();
+        randomButton.onClick.Invoke();
+        _send.onClick.Invoke();
     }
 
     public void GetMessage(NetworkMessage netMsg)
@@ -149,6 +157,7 @@ public class ResultManager : MonoBehaviour
         playerResult.PlayerID = PlayerID;
         Client.Instance.NetworkClient.Send(MyMsgTypes.PlayerResult, playerResult);
         Debug.Log("Message!");
+        _invisibleButton.gameObject.SetActive(true);
     }
 
 }

@@ -13,6 +13,5 @@ public class TestRunner : MonoBehaviour
 
     void Run()
     {
-        DecisionDisplay.TriggerDecision(testDecision);
     }
 }

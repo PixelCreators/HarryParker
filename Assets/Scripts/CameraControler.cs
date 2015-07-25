@@ -17,6 +17,14 @@ public class CameraControler : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
+
     public static void MoveTo(Vector3 position)
     {
         _instance.StartCoroutine(_instance.MoveToCoroutine(position));

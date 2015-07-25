@@ -8,9 +8,11 @@ public class DecisionDisplay : MonoBehaviour
     public GameObject ButtonPrefab;
     public Transform ButtonPanel;
     private List<GameObject> activeButtons = new List<GameObject>() ;
+    public Decision[] Decisions;
+    private int _pendingDecision;
 
     public static event Action DecisionDisplayed;
-    public static event Action<string> DecisionChosen;
+    public static event Action<int, int> DecisionChosen;
 
     void Awake()
     {
@@ -25,8 +27,17 @@ public class DecisionDisplay : MonoBehaviour
         }
     }
 
-    public static void TriggerDecision(Decision decision)
+    void OnDestroy()
     {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
+
+    public static void TriggerDecision(int decisionId)
+    {
+        _instance._pendingDecision = decisionId;
         if (_instance.gameObject.activeInHierarchy)
         {
             return;
@@ -35,22 +46,27 @@ public class DecisionDisplay : MonoBehaviour
         {
             DecisionDisplayed();
         }
-        foreach (var option in decision.Options)
+        for (int i = 0; i < _instance.Decisions[decisionId].Options.Length; i++)
         {
+            var option = _instance.Decisions[decisionId].Options[i];
             var newButton = Instantiate(_instance.ButtonPrefab);
             newButton.transform.SetParent(_instance.ButtonPanel, false);
-            newButton.GetComponent<DecisionButton>().Init(option);
+            newButton.GetComponent<DecisionButton>().Init(option, i);
             _instance.gameObject.SetActive(true);
         }
         // TODO: Sendd options to clients
     }
 
-    public static void ChooseDecision(string decision)
+    public static void ChooseDecision(int decision)
     {
         _instance.gameObject.SetActive(false);
         if (DecisionChosen != null)
         {
-            DecisionChosen(decision);
+            DecisionChosen(_instance._pendingDecision, decision);
+        }
+        foreach (var activeButton in _instance.activeButtons)
+        {
+            Destroy(activeButton);
         }
     }
 }

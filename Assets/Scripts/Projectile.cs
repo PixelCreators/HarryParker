@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
         GetComponent<Rigidbody2D>().MovePosition(transform.position + transform.right*Speed*Time.fixedDeltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         var other = col.gameObject;
 

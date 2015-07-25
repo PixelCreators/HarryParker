@@ -6,6 +6,7 @@ public class MyMsgTypes
 {
     public static short Decision = 1001;
     public static short PlayerResult = 1002;
+    public static short EndVoting = 1003;
 };
 
 public class Client : MonoBehaviour
@@ -34,28 +35,38 @@ public class Client : MonoBehaviour
 
     public void Connect()
     {
-        DebugConsole.Instance.PrintString("Trying to connect with server");
+        //DebugConsole.Instance.PrintString("Trying to connect with server");
         var ip = IPInputField.text;
         NetworkClient.Connect(ip, 1337);
         NetworkClient.RegisterHandler(MsgType.Connect, OnConnected);
         NetworkClient.RegisterHandler(MsgType.Error, OnError);
         NetworkClient.RegisterHandler(MyMsgTypes.Decision, GetMessage);
+        NetworkClient.RegisterHandler(MyMsgTypes.EndVoting, EndVoting);
         Application.LoadLevel("DecisionScene");
     }
 
     public void OnConnected(NetworkMessage netMsg)
     {
-        DebugConsole.Instance.PrintString("Connected to server");
+        Debug.Log("Connected to server");
+        //DebugConsole.Instance.PrintString("Connected to server");
     }
 
     public void OnError(NetworkMessage netMsg)
     {
-        DebugConsole.Instance.PrintString("Error");
+        Debug.Log("Error");
+        if (Application.loadedLevelName != "ConnectScene")
+            Application.LoadLevel("ConnectScene");
+        //DebugConsole.Instance.PrintString("Error");
     }
 
     public void GetMessage(NetworkMessage netMsg)
     {
         FindObjectOfType<ResultManager>().GetMessage(netMsg);
+    }
+
+    public void EndVoting(NetworkMessage netMsg)
+    {
+        FindObjectOfType<ResultManager>().EndVoting(netMsg.ReadMessage<EndVotingMessage>().isJustDoIt);
     }
 	
 

@@ -18,9 +18,10 @@ public class CharacterMotor : MonoBehaviour
     [HideInInspector]
     public Direction CurrentDirection;
 
+    public bool Dead;
+    private Vector2 lastDirection;
     public Animator MovementAnimator;
     public float Speed;
-    public bool Dead;
 
     private void Awake()
     {
@@ -28,35 +29,39 @@ public class CharacterMotor : MonoBehaviour
         _attack = GetComponent<PlayerAttack>();
     }
 
-    private Vector2 lastDirection;
+    public void Kick(Vector3 position)
+    {
+        if (position.x > transform.position.x)
+        {
+            MovementAnimator.SetTrigger("KickL");
+        }
+        else
+        {
+            MovementAnimator.SetTrigger("KickR");
+        }
+    }
 
     private void Update()
     {
         if (Dead)
         {
             MovementAnimator.SetBool("Dead", true);
-            MovementAnimator.SetInteger("Direction", (int)Direction.Down);
+            MovementAnimator.SetInteger("Direction", (int) Direction.Down);
             MovementAnimator.SetBool("Running", false);
             MovementAnimator.SetBool("Shooting", false);
             return;
         }
         var direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
         if (direction.magnitude != 0)
         {
             lastDirection = direction;
         }
-        //if (!_attack.IsShooting)
-        {
-            _rigidbody.velocity = direction.normalized*Speed*TimeManager.TimeMultiplier;
-        }
-        //else
-        //{
-        //    _rigidbody.velocity = Vector2.zero;
-        //}
-
+        _rigidbody.velocity = direction.normalized*Speed*TimeManager.TimeMultiplier;
         CurrentDirection = DirectionHelper.VecToDirection(lastDirection);
-        MovementAnimator.SetInteger("Direction", (int)CurrentDirection);
-        MovementAnimator.SetBool("Running", direction.magnitude != 0 && !_attack.IsShooting && TimeManager.TimeMultiplier != 0);
+        MovementAnimator.SetInteger("Direction", (int) CurrentDirection);
+        MovementAnimator.SetBool("Running",
+            direction.magnitude != 0 && !_attack.IsShooting && TimeManager.TimeMultiplier != 0);
         MovementAnimator.SetBool("Shooting", _attack.IsShooting && TimeManager.TimeMultiplier != 0);
     }
 }

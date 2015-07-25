@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class KickHulkTrigger : MonoBehaviour 
+public class KickMPTrigger : MonoBehaviour 
 {
     bool PlayerInBound = false;
-    public HulkAI Hulk;
+    public MPAI MP;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -27,9 +27,7 @@ public class KickHulkTrigger : MonoBehaviour
     {
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
-            Hulk.SMAAAAAAAAAAAAAAASH(); 
-            Tooltip.Hide();
+            MP.GetKicked();
             gameObject.SetActive(false);
         }
-    }
-}
+    }}

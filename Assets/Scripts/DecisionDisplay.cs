@@ -64,5 +64,9 @@ public class DecisionDisplay : MonoBehaviour
         {
             DecisionChosen(_instance._pendingDecision, decision);
         }
+        foreach (var activeButton in _instance.activeButtons)
+        {
+            Destroy(activeButton);
+        }
     }
 }

@@ -4,16 +4,16 @@ using UnityEngine.UI;
 public class DecisionButton : MonoBehaviour
 {
     public Text ButtonText;
-    private string decision;
+    private int id;
 
-    public void Init(string decision)
+    public void Init(string decision, int id)
     {
         ButtonText.text = decision;
-        this.decision = decision;
+        this.id = id;
     }
 
     public void OnClick()
     {
-        DecisionDisplay.ChooseDecision(decision);
+        DecisionDisplay.ChooseDecision(id);
     }
 }

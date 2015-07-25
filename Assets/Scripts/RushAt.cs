@@ -4,10 +4,14 @@ using UnityEngine;
 public class RushAt : MonoBehaviour
 {
     public AnimationCurve SpeedUpCurve;
+    public bool IsRushing;
 
     public void Rush(Vector3 position)
     {
-        StopAllCoroutines();
+        if (IsRushing)
+        {
+            return;
+        }
         StartCoroutine(RushCoroutine(position));
     }
 
@@ -19,13 +23,20 @@ public class RushAt : MonoBehaviour
         }
     }
 
-    public bool KillOnContact = true;
+    [HideInInspector]
+    public bool KillOnContact = false;
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionStay2D(Collision2D col)
     {
-        if (KillOnContact && col.gameObject.CompareTag(Constants.Tags.Player))
+        if (IsRushing && KillOnContact && col.gameObject.CompareTag(Constants.Tags.Player))
         {
             Player.Kill();
+            KillOnContact = false;
+        }
+
+        if (col.gameObject.CompareTag(Constants.Tags.Player))
+        {
+            Debug.Log(IsRushing);
         }
 
         if (col.gameObject.layer == Constants.Layers.Walls)
@@ -55,6 +66,7 @@ public class RushAt : MonoBehaviour
         var target = hitInfo.point;
         var startTime = Time.fixedTime;
         float speedUpProgress = 0;
+        IsRushing = true;
 
         while (speedUpProgress < 1)
         {
@@ -67,7 +79,8 @@ public class RushAt : MonoBehaviour
         while (((Vector2)transform.position - target).magnitude > ColliderSize && !WallContact)
         {
             yield return null;
-            GetComponent<Rigidbody2D>().MovePosition(Vector3.MoveTowards(transform.position, target, RushSpeed*Time.fixedDeltaTime));
+            GetComponent<Rigidbody2D>().MovePosition(Vector3.MoveTowards(transform.position, target, TimeManager.TimeMultiplier*RushSpeed*Time.fixedDeltaTime));
         }
+        IsRushing = false;
     }
 }

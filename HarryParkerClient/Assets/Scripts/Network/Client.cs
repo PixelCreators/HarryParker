@@ -30,13 +30,12 @@ public class Client : MonoBehaviour
     {
         Application.targetFrameRate = 30;
         NetworkClient = new NetworkClient();
-        IPInputField = FindObjectOfType<InputField>();
     }
 
     public void Connect()
     {
         //DebugConsole.Instance.PrintString("Trying to connect with server");
-        var ip = IPInputField.text;
+        var ip = FindObjectOfType<InputField>().text;
         NetworkClient.Connect(ip, 1337);
         NetworkClient.RegisterHandler(MsgType.Connect, OnConnected);
         NetworkClient.RegisterHandler(MsgType.Error, OnError);

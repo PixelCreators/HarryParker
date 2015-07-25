@@ -50,11 +50,22 @@ public class DecisionDisplay : MonoBehaviour
         {
             var option = _instance.Decisions[decisionId].Options[i];
             var newButton = Instantiate(_instance.ButtonPrefab);
-            newButton.transform.SetParent(_instance.ButtonPanel, false);
             newButton.GetComponent<DecisionButton>().Init(option, i);
+            _instance.activeButtons.Add(newButton);
             _instance.gameObject.SetActive(true);
         }
-        // TODO: Sendd options to clients
+
+        DecisionMessage decisionMessage = new DecisionMessage();
+
+        int length = _instance.Decisions.Length + 1;
+        decisionMessage.Decisions = new string[length];
+        decisionMessage.Decisions[0] = _instance.Decisions[decisionId].Description;
+        for (int i = 1; i < length; i++)
+        {
+            decisionMessage.Decisions[i] = _instance.Decisions[decisionId].Options[i - 1];
+        }
+
+        Server.Instance.SendDecisionText(decisionMessage);
     }
 
     public static void ChooseDecision(int decision)

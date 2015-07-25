@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class KickHulkTrigger : MonoBehaviour 
+public class MPButtonTrigger : MonoBehaviour
 {
-    bool PlayerInBound = false;
-    public HulkAI Hulk;
+    private bool PlayerInBound = false;
+    public MPAI McPixel;
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
@@ -14,7 +14,7 @@ public class KickHulkTrigger : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
+    private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
@@ -23,12 +23,11 @@ public class KickHulkTrigger : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
-            Hulk.SMAAAAAAAAAAAAAAASH(); 
-            Tooltip.Hide();
+            McPixel.DropStone();
             gameObject.SetActive(false);
         }
     }

@@ -13,6 +13,11 @@ TagManager:
   - UI
   - 
   - 
+  - Walls
+  - PlayerProjectile
+  - EnemyProjectile
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -31,12 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerTrigger
   m_SortingLayers:
   - name: Default
     uniqueID: 0

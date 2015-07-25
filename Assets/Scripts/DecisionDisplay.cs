@@ -47,6 +47,7 @@ public class DecisionDisplay : MonoBehaviour
 
     public static void ChooseDecision(string decision)
     {
+        _instance.gameObject.SetActive(false);
         if (DecisionChosen != null)
         {
             DecisionChosen(decision);

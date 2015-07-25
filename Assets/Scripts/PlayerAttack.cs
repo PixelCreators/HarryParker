@@ -3,12 +3,25 @@
 [RequireComponent(typeof (CharacterMotor))]
 public class PlayerAttack : MonoBehaviour
 {
+    private float _lastShot;
+    public bool IsShooting;
     public GameObject Projectile;
+    public float ShootInterval;
 
     private void Update()
     {
+        if (_lastShot + ShootInterval > Time.time)
+        {
+            IsShooting = true;
+            return;
+        }
+        IsShooting = false;
+
         if (Input.GetKeyDown(KeyCode.M))
         {
+            _lastShot = Time.time;
+            IsShooting = true;
+
             Quaternion rotation;
             switch (GetComponent<CharacterMotor>().CurrentDirection)
             {

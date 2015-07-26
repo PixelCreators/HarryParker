@@ -482,7 +482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
 --- !u!1 &176794686
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,7 +3122,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
 --- !u!1 &901914194
 GameObject:
   m_ObjectHideFlags: 0
@@ -4963,9 +4963,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc2f038d2a8ca9429a82c73d571282d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Triss: {fileID: 0}
+  Triss: {fileID: 1883361241}
   WitcherMotor: {fileID: 1670541443}
-  Yen: {fileID: 0}
+  Yen: {fileID: 1298330560}
 --- !u!114 &1126774938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5368,14 +5368,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad921c1c00f398e40b8e6f45ca0db4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portal: {fileID: 0}
-  PosMin: {fileID: 0}
-  PosMax: {fileID: 0}
   BlinkSprite: {fileID: 0}
-  SpellUpPrefab: {fileID: 0}
-  SpellDownPrefab: {fileID: 0}
-  CastTime: 0
   CastDelay: 3
+  CastingSprite: {fileID: 1466386363}
+  CastTime: 1
+  NormalSprite: {fileID: 732029847}
+  Portal: {fileID: 554360382}
+  PosMax: {fileID: 1942863805}
+  PosMin: {fileID: 877103820}
+  SpellDownPrefab: {fileID: 131866, guid: 538d950c76afa4042a5e19ad87e616e6, type: 2}
+  SpellUpPrefab: {fileID: 131866, guid: 94eda470ba545ae46873805fd2d8b7a7, type: 2}
+  CastAtOnce: 3
 --- !u!114 &1298330561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7069,7 +7072,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!114 &1633766573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7820,14 +7823,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad921c1c00f398e40b8e6f45ca0db4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portal: {fileID: 0}
-  PosMin: {fileID: 0}
-  PosMax: {fileID: 0}
-  BlinkSprite: {fileID: 0}
-  SpellUpPrefab: {fileID: 0}
-  SpellDownPrefab: {fileID: 0}
-  CastTime: 0
+  BlinkSprite: {fileID: 1798504844}
   CastDelay: 3
+  CastingSprite: {fileID: 1676732155}
+  CastTime: 1
+  NormalSprite: {fileID: 1939640806}
+  Portal: {fileID: 351975715}
+  PosMax: {fileID: 1942863805}
+  PosMin: {fileID: 877103820}
+  SpellDownPrefab: {fileID: 131866, guid: 538d950c76afa4042a5e19ad87e616e6, type: 2}
+  SpellUpPrefab: {fileID: 131866, guid: 94eda470ba545ae46873805fd2d8b7a7, type: 2}
+  CastAtOnce: 3
 --- !u!114 &1883361242
 MonoBehaviour:
   m_ObjectHideFlags: 0

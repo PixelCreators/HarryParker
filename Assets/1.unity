@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
+  HulkSmash: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
 --- !u!1 &56032793
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 56032793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.0799999982, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1924273415}
@@ -482,7 +483,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
 --- !u!1 &176794686
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +767,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 238852026}
-  lengthInSec: 3
+  lengthInSec: 5
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -1914,6 +1915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
   Encounter: {fileID: 1432603139}
+  HulkSmash: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
 --- !u!1 &340415012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,7 +3390,6 @@ GameObject:
   - 114: {fileID: 977774859}
   - 114: {fileID: 977774861}
   - 82: {fileID: 977774860}
-  - 114: {fileID: 977774862}
   m_Layer: 12
   m_Name: Hulk
   m_TagString: Untagged
@@ -3494,7 +3495,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4cb5827a0dab4534ab61ec5c2bf77969, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3565,23 +3566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb53a971cc1a9ea4396da67036d0d0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmashScream: {fileID: 977774860}
+  HulkSmash: {fileID: 0}
+  DeathMetal: {fileID: 8300000, guid: 30b73450c57638849bb897e55aa275f2, type: 3}
   AnimationHolder: {fileID: 212829696}
   DeadSprite: {fileID: 1384228594}
---- !u!114 &977774862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 977774854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d00b0ac9a1e9a4f489c454f8ee9db8d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Smaaaaash: {fileID: 0}
-  NewMusic: {fileID: 0}
-  Hit: {fileID: 0}
-  Roaaaar: {fileID: 0}
 --- !u!1 &1005643379
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,7 +3716,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1011162760}
-  lengthInSec: 3
+  lengthInSec: 5
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -4966,7 +4955,7 @@ MonoBehaviour:
   Triss: {fileID: 1883361241}
   WitcherMotor: {fileID: 1670541443}
   Yen: {fileID: 1298330560}
-  Door: {fileID: 1306474971}
+  Door: {fileID: 0}
 --- !u!114 &1126774938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5405,10 +5394,6 @@ BoxCollider2D:
   m_Offset: {x: -.0799999982, y: 0}
   serializedVersion: 2
   m_Size: {x: .610000014, y: 1.19000006}
---- !u!1 &1306474971 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 106994, guid: 4d21864b52e30ad4598637a3ccca97ec, type: 2}
-  m_PrefabInternal: {fileID: 2043174819}
 --- !u!1 &1353350198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5463,6 +5448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
+  HulkSmash: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
 --- !u!1 &1375877789
 GameObject:
   m_ObjectHideFlags: 0
@@ -5517,6 +5503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
+  HulkSmash: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
 --- !u!1 &1384228594
 GameObject:
   m_ObjectHideFlags: 0
@@ -5642,7 +5629,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1400009039}
-  lengthInSec: 3
+  lengthInSec: 5
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -7050,6 +7037,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1647228592}
   m_RootOrder: 5
+--- !u!1 &1633766571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1633766572}
+  - 114: {fileID: 1633766573}
+  m_Layer: 0
+  m_Name: SpellUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1633766572
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1633766571}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .023834398, y: 22.4270401, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+--- !u!114 &1633766573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1633766571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109dcf5fe6012bd45b6a087eaf19bb7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goUp: 0
+  FlamePrefab: {fileID: 0}
+  SpawnDelta: {x: 0, y: 0, z: 0}
+  Spread: 0
 --- !u!1 &1647228591
 GameObject:
   m_ObjectHideFlags: 0
@@ -7892,7 +7922,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1901297926}
-  lengthInSec: 3
+  lengthInSec: 5
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -9352,7 +9382,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2048127694}
-  lengthInSec: 3
+  lengthInSec: 5
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -10532,7 +10562,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2074046644}
-  lengthInSec: 3
+  lengthInSec: 5
   startDelay: 0
   speed: 1
   randomSeed: 0

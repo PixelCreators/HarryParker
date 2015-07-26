@@ -12,7 +12,10 @@ public class HulkAI : MonoBehaviour
     private const float _screamChance = 0.5f;
     private float lastRush;
     private const float RushDelay = 1.5f;
-    private AudioSource SmashScream;
+    public AudioSource SmashScream;
+    public AudioSource HulkSmash;
+
+    public AudioClip DeathMetal;
 
     public GameObject AnimationHolder;
     public GameObject DeadSprite;
@@ -42,6 +45,7 @@ public class HulkAI : MonoBehaviour
 
     public void SMAAAAAAAAAAAAAAASH()
     {
+        MyAudio.PlayBackgroundMusic(DeathMetal);
         _isSmashing = true;
         lastRush = Time.time + RushDelay;
         StartCoroutine(SetDeadlyCoroutine());

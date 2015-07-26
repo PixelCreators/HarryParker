@@ -4,7 +4,7 @@ public class HugTrigger : MonoBehaviour
 {
     bool PlayerInBound = false;
     public HulkAI Hulk;
-
+    public AudioClip HulkSmash;
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
@@ -27,6 +27,7 @@ public class HugTrigger : MonoBehaviour
     {
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
+            AudioSource.PlayClipAtPoint(HulkSmash, Vector3.zero);
             Tooltip.Hide();
             Player.Kill();
         }

@@ -28,6 +28,7 @@ public class MPBurnTrigger : MonoBehaviour
         {
             McPixel.BurnHotdog();
             gameObject.SetActive(false);
+            Tooltip.Hide();
         }
     }
 }

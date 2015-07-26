@@ -27,25 +27,24 @@ public class CharacterMotor : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _attack = GetComponent<PlayerAttack>();
+
+        Player.Died += Die;
     }
 
-    public void Kick(Vector3 position)
+    private void Die()
     {
-        if (position.x > transform.position.x)
-        {
-            MovementAnimator.SetTrigger("KickL");
-        }
-        else
-        {
-            MovementAnimator.SetTrigger("KickR");
-        }
+        Dead = true;
+    }
+
+    private void OnDestroy()
+    {
+        Player.Died -= Die;
     }
 
     private void Update()
     {
         if (Dead)
         {
-            MovementAnimator.SetBool("Dead", true);
             MovementAnimator.SetInteger("Direction", (int) Direction.Down);
             MovementAnimator.SetBool("Running", false);
             MovementAnimator.SetBool("Shooting", false);

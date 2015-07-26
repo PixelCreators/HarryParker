@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class KickMPTrigger : MonoBehaviour 
 {
@@ -27,7 +28,9 @@ public class KickMPTrigger : MonoBehaviour
     {
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
-            MP.GetKicked();
             gameObject.SetActive(false);
+            MP.GetKicked();
         }
-    }}
+    }
+}
+

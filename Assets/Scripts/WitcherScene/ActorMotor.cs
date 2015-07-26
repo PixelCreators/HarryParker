@@ -16,11 +16,9 @@ public class ActorMotor : MonoBehaviour
             target = DEBUGTarget.position;
         }
         var toTarget = target - transform.position;
-        Debug.Log(toTarget.magnitude);
         var dir = DirectionHelper.VecToDirection(toTarget);
         movementAnimator.SetInteger("Direction", (int) dir);
         var running = toTarget.magnitude > distanceEpsilon;
-        Debug.Log(running);
         movementAnimator.SetBool("Running", running);
 
         var rigidbody = GetComponent<Rigidbody2D>();

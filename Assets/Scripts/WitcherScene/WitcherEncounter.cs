@@ -3,9 +3,10 @@ using UnityEngine;
 public class WitcherEncounter : MonoBehaviour
 {
     private static WitcherEncounter _instance;
-    public Transform YenTransform;
-    public Transform TrissTransform;
-    public ActorMotor WitcherMotor; 
+    public Witch YenTransform;
+    public Witch TrissTransform;
+    public ActorMotor WitcherMotor;
+    public GameObject Portal;
 
     void Awake()
     {
@@ -45,9 +46,16 @@ public class WitcherEncounter : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator StartWitchEncounter()
+    private IEnumerator StartWitchEncounter(Witch attacking, Witch leaving)
     {
-        yield return null;
+        var leavingTransform = leaving.transform;
+        var witcherTransform = WitcherMotor.transform;
+        WitcherMotor.MoveTo(leaving.transform.position);
+        while ((leavingTransform.position - witcherTransform.position).magnitude < 1)
+        {
+            yield return null;
+        }
+
     }
 
     public void StartWitcherEncounter()

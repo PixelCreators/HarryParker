@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
+
 public class WitcherEncounter : MonoBehaviour
 {
     private static WitcherEncounter _instance;
-    public Witch YenTransform;
-    public Witch TrissTransform;
+    public Witch Triss;
     public ActorMotor WitcherMotor;
-    public GameObject Portal;
+    public Witch Yen;
 
-    void Awake()
+    private void Awake()
     {
         if (_instance == null)
         {
@@ -16,7 +16,7 @@ public class WitcherEncounter : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    private void OnDestroy()
     {
         if (_instance == this)
         {
@@ -26,24 +26,22 @@ public class WitcherEncounter : MonoBehaviour
 
     public void StartYenEncounter()
     {
-        StartCoroutine(_instance.YenEncounterCoroutine());
+        StartCoroutine(YenEncounterCoroutine());
     }
 
     private IEnumerator YenEncounterCoroutine()
     {
-        Debug.Log("YenEncounterStarted");
-        yield return null;
+        return StartWitchEncounter(Yen, Triss);
     }
 
     public void StartTrissEncounter()
     {
-        StartCoroutine(_instance.TrissEncounterCoroutine());
+        StartCoroutine(TrissEncounterCoroutine());
     }
 
     private IEnumerator TrissEncounterCoroutine()
     {
-        Debug.Log("TrissEncounterStarted");
-        yield return null;
+        return StartWitchEncounter(Triss, Yen);
     }
 
     private IEnumerator StartWitchEncounter(Witch attacking, Witch leaving)
@@ -51,11 +49,20 @@ public class WitcherEncounter : MonoBehaviour
         var leavingTransform = leaving.transform;
         var witcherTransform = WitcherMotor.transform;
         WitcherMotor.MoveTo(leaving.transform.position);
-        while ((leavingTransform.position - witcherTransform.position).magnitude < 1)
+        while ((leavingTransform.position - witcherTransform.position).magnitude > 1)
         {
             yield return null;
         }
 
+        leaving.OpenPortal();
+
+        while (Vector3.Distance(leavingTransform.position, witcherTransform.position) > 0.2f)
+        {
+            yield return null;
+        }
+        leaving.gameObject.SetActive(false);
+        WitcherMotor.gameObject.SetActive(false);
+        attacking.StartFight();
     }
 
     public void StartWitcherEncounter()

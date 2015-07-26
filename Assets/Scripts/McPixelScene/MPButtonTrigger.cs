@@ -29,6 +29,7 @@ public class MPButtonTrigger : MonoBehaviour
         {
             McPixel.DropStone();
             gameObject.SetActive(false);
+            Tooltip.Hide();
         }
     }
 }

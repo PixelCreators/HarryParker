@@ -69,12 +69,6 @@ public class DecisionDisplay : MonoBehaviour
         {
             decisionMessage.Decisions[i] = _instance.Decisions[decisionId].Options[i - 1];
         }
-
-        foreach(var dec in decisionMessage.Decisions)
-        {
-            Debug.Log(dec);
-        }
-
         Server.Instance.SendDecisionText(decisionMessage);
     }
 

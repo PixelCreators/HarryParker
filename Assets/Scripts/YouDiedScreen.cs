@@ -5,6 +5,7 @@ public class YouDiedScreen : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            Server.Instance.ResetClients();
             Application.LoadLevel("1");
         }
     }

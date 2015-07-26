@@ -8,6 +8,7 @@ public class MPAI : MonoBehaviour
     public GameObject ExplodedSprite;
     public GameObject Hotdog;
     public Transform StoneSprite;
+    public Transform StoneTargetPosition;
     public GameObject Door;
 
     public void GetKicked()
@@ -17,6 +18,7 @@ public class MPAI : MonoBehaviour
 
     private IEnumerator KickPlayer()
     {
+        Player.Kick(transform.position);
         yield return new WaitForSeconds(0.4f);
         IdleSprite.SetActive(false);
         KickSprite.SetActive(true);
@@ -70,10 +72,10 @@ public class MPAI : MonoBehaviour
         while (progress < 1)
         {
             progress = (Time.time - startTime)/DropTime;
-            StoneSprite.position = Vector3.Lerp(start, transform.position, progress);
+            StoneSprite.position = Vector3.Lerp(start, StoneTargetPosition.position, progress);
             yield return null;
         }
-        StoneSprite.position = transform.position;
+        StoneSprite.position = StoneTargetPosition.position;
         FinishLevel();
     }
 

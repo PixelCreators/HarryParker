@@ -23,9 +23,9 @@ public class WitcherEncounter : MonoBehaviour
         }
     }
 
-    public static void StartYenEncounter()
+    public void StartYenEncounter()
     {
-        _instance.StartCoroutine(_instance.YenEncounterCoroutine());
+        StartCoroutine(_instance.YenEncounterCoroutine());
     }
 
     private IEnumerator YenEncounterCoroutine()
@@ -34,14 +34,30 @@ public class WitcherEncounter : MonoBehaviour
         yield return null;
     }
 
-    private static void StartTrissEncounter()
+    public void StartTrissEncounter()
     {
-        _instance.StartCoroutine(_instance.TrissEncounterCoroutine());
+        StartCoroutine(_instance.TrissEncounterCoroutine());
     }
 
     private IEnumerator TrissEncounterCoroutine()
     {
         Debug.Log("TrissEncounterStarted");
+        yield return null;
+    }
+
+    private IEnumerator StartWitchEncounter()
+    {
+        yield return null;
+    }
+
+    public void StartWitcherEncounter()
+    {
+        StartCoroutine(WitcherEncounterCoroutine());
+    }
+
+    private IEnumerator WitcherEncounterCoroutine()
+    {
+        Debug.Log("WitcherEncounterStarted");
         yield return null;
     }
 }

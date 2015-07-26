@@ -34,10 +34,13 @@ public class PlayerKick : MonoBehaviour
         {
             _instance.KickSprite.transform.localScale = new Vector3(1, 1, 1);
         }
+        _instance.StartCoroutine(_instance.KickCoroutine());
     }
 
     private IEnumerator KickCoroutine()
     {
+        KickSprite.SetActive(true);
+        NormalSprite.SetActive(false);
         yield return new WaitForSeconds(KickTime);
         KickSprite.SetActive(false);
         NormalSprite.SetActive(true);

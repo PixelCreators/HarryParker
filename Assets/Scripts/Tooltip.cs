@@ -3,6 +3,7 @@ using UnityEngine.UI;
 public class Tooltip : MonoBehaviour 
 {
     private static Tooltip _instance;
+    public GameObject TooltipGo;
     public Text TooltipText;
 
     private void Awake()
@@ -20,11 +21,11 @@ public class Tooltip : MonoBehaviour
     public static void Show(string msg)
     {
         _instance.TooltipText.text = msg;
-        _instance.TooltipText.gameObject.SetActive(true);
+        _instance.TooltipGo.SetActive(true);
     }
 
     public static void Hide()
     {
-        _instance.TooltipText.gameObject.SetActive(false);
+        _instance.TooltipGo.SetActive(false);
     }
 }

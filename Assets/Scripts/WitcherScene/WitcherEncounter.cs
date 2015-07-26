@@ -8,6 +8,8 @@ public class WitcherEncounter : MonoBehaviour
     public ActorMotor WitcherMotor;
     public Witch Yen;
 
+    public GameObject Door;
+
     private void Awake()
     {
         if (_instance == null)
@@ -22,6 +24,11 @@ public class WitcherEncounter : MonoBehaviour
         {
             _instance = null;
         }
+    }
+
+    public static void Finish()
+    {
+        _instance.Door.SetActive(false);
     }
 
     public void StartYenEncounter()

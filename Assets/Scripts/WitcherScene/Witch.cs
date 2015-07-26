@@ -60,6 +60,11 @@ public class Witch : MonoBehaviour
 
             yield return null;
         }
+        Portal.transform.position = transform.position;
+        Portal.SetActive(true);
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
+        WitcherEncounter.Finish();
     }
 
     private IEnumerator Cast()

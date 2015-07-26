@@ -14,6 +14,7 @@ public class MyAudio : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+        Audio = GetComponent<AudioSource>();
     }
 
     public static void PlayBackgroundMusic(AudioClip audioClip)

@@ -29,6 +29,7 @@ public class HulkAI : MonoBehaviour
         _isSmashing = false;
         AnimationHolder.SetActive(false);
         DeadSprite.SetActive(true);
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
     private void OnDied()

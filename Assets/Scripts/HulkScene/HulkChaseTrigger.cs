@@ -3,7 +3,7 @@
 public class HulkChaseTrigger : MonoBehaviour
 {
     public HulkAI Hulk;
-    public AudioSource HulkSmash;
+    public AudioClip HulkSmash;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -11,7 +11,7 @@ public class HulkChaseTrigger : MonoBehaviour
         {
             Hulk.SMAAAAAAAAAAAAAAASH();
 
-            HulkSmash.Play();
+            AudioSource.PlayClipAtPoint(HulkSmash, Vector3.zero);
             gameObject.SetActive(false);
         }
     }

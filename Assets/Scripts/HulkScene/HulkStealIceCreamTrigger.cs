@@ -5,7 +5,7 @@ public class HulkStealIceCreamTrigger : MonoBehaviour
     bool PlayerInBound = false;
     public HulkAI Hulk;
     public IceCreamEncounter Encounter;
-    public AudioSource HulkSmash;
+    public AudioClip HulkSmash;
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
@@ -28,7 +28,7 @@ public class HulkStealIceCreamTrigger : MonoBehaviour
     {
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
-            HulkSmash.Play();
+            AudioSource.PlayClipAtPoint(HulkSmash, Vector3.zero);
             Tooltip.Hide();
             Hulk.SMAAAAAAAAAAAAAAASH();
             Encounter.gameObject.SetActive(true);

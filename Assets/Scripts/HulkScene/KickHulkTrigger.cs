@@ -4,7 +4,7 @@ public class KickHulkTrigger : MonoBehaviour
 {
     bool PlayerInBound = false;
     public HulkAI Hulk;
-    public AudioSource HulkSmash;
+    public AudioClip HulkSmash;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -29,7 +29,7 @@ public class KickHulkTrigger : MonoBehaviour
         if (PlayerInBound && Input.GetKeyDown(KeyCode.F))
         {
             Hulk.SMAAAAAAAAAAAAAAASH();
-            HulkSmash.Play();
+            AudioSource.PlayClipAtPoint(HulkSmash, Vector3.zero);
             Tooltip.Hide();
             gameObject.SetActive(false);
         }

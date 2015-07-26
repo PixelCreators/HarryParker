@@ -10,5 +10,7 @@ public class AudioTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
             MyAudio.PlayBackgroundMusic(Clip);
+
+        gameObject.SetActive(false);
     }
 }

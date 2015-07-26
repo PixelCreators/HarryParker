@@ -1,20 +1,28 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
+[RequireComponent(typeof (Enemy))]
 public class Witch : MonoBehaviour
 {
-    public GameObject Portal;
-    public Transform PosMin;
-    public Transform PosMax;
-
+    private bool _fighting;
+    private bool _hit;
+    private float _lastCast;
     public Transform BlinkSprite;
-    public GameObject SpellUpPrefab;
+    public float CastDelay = 3f;
+    public GameObject CastingSprite;
+    public float CastTime;
+    public GameObject NormalSprite;
+    public GameObject Portal;
+    public Transform PosMax;
+    public Transform PosMin;
     public GameObject SpellDownPrefab;
+    public GameObject SpellUpPrefab;
+    public int CastAtOnce = 3;
 
     public void StartFight()
     {
         _fighting = true;
+        GetComponent<Enemy>().DamageApplied += OnHit;
         StartCoroutine(FightCoroutine());
     }
 
@@ -35,14 +43,9 @@ public class Witch : MonoBehaviour
         Portal.SetActive(true);
     }
 
-    private bool _fighting;
-    public float CastTime;
-    private bool _hit;
-    public float CastDelay = 3f;
-    private float _lastCast;
-
     private IEnumerator FightCoroutine()
     {
+        Debug.Log(name);
         while (_fighting)
         {
             if (_hit)
@@ -50,7 +53,7 @@ public class Witch : MonoBehaviour
                 _hit = false;
                 yield return StartCoroutine(BlinkAway());
             }
-            if (!((_lastCast + CastDelay) < Time.time))
+            if ((_lastCast + CastDelay) < Time.time)
             {
                 yield return StartCoroutine(Cast());
             }
@@ -61,33 +64,50 @@ public class Witch : MonoBehaviour
 
     private IEnumerator Cast()
     {
-        Vector3 pos = PlayerPosition.PlayerTransform.position;
-        while (PlayerPosition.DistanceToPlayer(pos) < 4)
+        for (int i = 0; i < CastAtOnce; i++)
         {
-            pos = new Vector3(Random.Range(PosMin.position.x, PosMax.position.x),
-                Random.Range(PosMin.position.y, PosMax.position.y));
+            CastSpell();
         }
-        if ((pos.y - PosMin.position.y)/(PosMax.position.y - PosMin.position.x) < 0.5f)
+        NormalSprite.SetActive(false);
+        CastingSprite.SetActive(true);
+        yield return new WaitForSeconds(CastTime);
+        NormalSprite.SetActive(true);
+        CastingSprite.SetActive(false);
+    }
+
+    private void CastSpell()
+    {
+        var pos = PlayerPosition.PlayerTransform.position;
+        var castUp = Random.value > 0.5f;
+        Vector3 max = PosMax.position;
+        Vector3 min = PosMin.position;
+        if (castUp)
         {
-            Instantiate(SpellUpPrefab, pos, Quaternion.identity);
+            max.y = ( max.y + min.y) / 2;
         }
         else
         {
-            Instantiate(SpellDownPrefab, pos, Quaternion.identity);
+            min.y = ( max.y +  min.y) / 2;
         }
-        yield return new WaitForSeconds(CastTime);
+        while (PlayerPosition.DistanceToPlayer(pos) < 4)
+        {
+            pos = new Vector3(Random.Range(min.x, max.x),
+                Random.Range(min.y, max.y));
+        }
+        Instantiate(castUp ? SpellUpPrefab : SpellDownPrefab, pos, Quaternion.identity);
     }
 
     private IEnumerator BlinkAway()
     {
-        Vector3 pos = new Vector3(Random.Range(PosMin.position.x, PosMax.position.x), Random.Range(PosMin.position.y, PosMax.position.y));
+        var pos = new Vector3(Random.Range(PosMin.position.x, PosMax.position.x),
+            Random.Range(PosMin.position.y, PosMax.position.y));
         float scale = 0;
         BlinkSprite.gameObject.SetActive(true);
         while (scale < 1)
         {
             BlinkSprite.transform.localScale = new Vector3(scale, scale, scale);
             yield return null;
-            scale += Time.deltaTime;
+            scale += Time.deltaTime*5;
         }
 
         transform.position = pos;
@@ -95,7 +115,7 @@ public class Witch : MonoBehaviour
         {
             BlinkSprite.transform.localScale = new Vector3(scale, scale, scale);
             yield return null;
-            scale -= Time.deltaTime;
+            scale -= Time.deltaTime*5;
         }
         BlinkSprite.gameObject.SetActive(false);
     }

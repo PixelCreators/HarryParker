@@ -97,6 +97,7 @@ GameObject:
   - 4: {fileID: 257062}
   - 61: {fileID: 257063}
   - 114: {fileID: 257064}
+  - 82: {fileID: 257065}
   m_Layer: 0
   m_Name: ChaseTrigger
   m_TagString: Untagged
@@ -141,6 +142,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
+  HulkSmash: {fileID: 257065}
+--- !u!82 &257065
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257061}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &56032793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1940,7 @@ GameObject:
   - 4: {fileID: 261360649}
   - 61: {fileID: 261360650}
   - 114: {fileID: 261360651}
+  - 82: {fileID: 261360652}
   m_Layer: 0
   m_Name: StealTrigger
   m_TagString: Untagged
@@ -1914,6 +1986,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
   Encounter: {fileID: 1432603139}
+  HulkSmash: {fileID: 261360652}
+--- !u!82 &261360652
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 261360648}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &340415012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,7 +3530,6 @@ GameObject:
   - 114: {fileID: 977774859}
   - 114: {fileID: 977774861}
   - 82: {fileID: 977774860}
-  - 114: {fileID: 977774862}
   m_Layer: 12
   m_Name: Hulk
   m_TagString: Untagged
@@ -3494,7 +3635,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4cb5827a0dab4534ab61ec5c2bf77969, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3565,23 +3706,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb53a971cc1a9ea4396da67036d0d0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmashScream: {fileID: 977774860}
+  HulkSmash: {fileID: 0}
+  DeathMetal: {fileID: 0}
   AnimationHolder: {fileID: 212829696}
   DeadSprite: {fileID: 1384228594}
---- !u!114 &977774862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 977774854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d00b0ac9a1e9a4f489c454f8ee9db8d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Smaaaaash: {fileID: 0}
-  NewMusic: {fileID: 0}
-  Hit: {fileID: 0}
-  Roaaaar: {fileID: 0}
 --- !u!1 &1005643379
 GameObject:
   m_ObjectHideFlags: 0
@@ -5414,6 +5543,7 @@ GameObject:
   - 4: {fileID: 1353350199}
   - 61: {fileID: 1353350200}
   - 114: {fileID: 1353350201}
+  - 82: {fileID: 1353350202}
   m_Layer: 0
   m_Name: HugTrigger
   m_TagString: Untagged
@@ -5458,6 +5588,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
+  HulkSmash: {fileID: 1353350202}
+--- !u!82 &1353350202
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1353350198}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1375877789
 GameObject:
   m_ObjectHideFlags: 0
@@ -5468,6 +5668,7 @@ GameObject:
   - 4: {fileID: 1375877790}
   - 61: {fileID: 1375877791}
   - 114: {fileID: 1375877792}
+  - 82: {fileID: 1375877793}
   m_Layer: 0
   m_Name: KickTrigger
   m_TagString: Untagged
@@ -5512,6 +5713,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hulk: {fileID: 977774861}
+  HulkSmash: {fileID: 1375877793}
+--- !u!82 &1375877793
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1375877789}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1384228594
 GameObject:
   m_ObjectHideFlags: 0

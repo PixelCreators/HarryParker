@@ -16,6 +16,9 @@ public class EnterRoomTrigger : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         GetComponent<Collider2D>().isTrigger = false;
-        Door.gameObject.SetActive(true);
+        if (Door != null)
+        {
+            Door.gameObject.SetActive(true);
+        }
     }
 }

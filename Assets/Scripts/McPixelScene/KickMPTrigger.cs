@@ -30,6 +30,7 @@ public class KickMPTrigger : MonoBehaviour
         {
             gameObject.SetActive(false);
             MP.GetKicked();
+            Tooltip.Hide();
         }
     }
 }

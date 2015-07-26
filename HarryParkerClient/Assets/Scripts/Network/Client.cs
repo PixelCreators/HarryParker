@@ -7,6 +7,7 @@ public class MyMsgTypes
     public static short Decision = 1001;
     public static short PlayerResult = 1002;
     public static short EndVoting = 1003;
+    public static short ResetClients = 1004;
 };
 
 public class Client : MonoBehaviour
@@ -41,12 +42,13 @@ public class Client : MonoBehaviour
         NetworkClient.RegisterHandler(MsgType.Error, OnError);
         NetworkClient.RegisterHandler(MyMsgTypes.Decision, GetMessage);
         NetworkClient.RegisterHandler(MyMsgTypes.EndVoting, EndVoting);
-        Application.LoadLevel("DecisionScene");
+        NetworkClient.RegisterHandler(MyMsgTypes.ResetClients, ResetClients)
     }
 
     public void OnConnected(NetworkMessage netMsg)
     {
         Debug.Log("Connected to server");
+        Application.LoadLevel("DecisionScene");
         //DebugConsole.Instance.PrintString("Connected to server");
     }
 
@@ -68,5 +70,15 @@ public class Client : MonoBehaviour
         FindObjectOfType<ResultManager>().EndVoting(netMsg.ReadMessage<EndVotingMessage>().isJustDoIt);
     }
 	
+    public void ResetClients(NetworkMessage netMsg)
+    {
+        FindObjectOfType<ResultManager>().Reset();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+    }
 
 }

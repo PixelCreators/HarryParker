@@ -140,6 +140,7 @@ public class ResultManager : MonoBehaviour
         _currentTime = 0.0f;
         _sended = false;
         _chosen = false;
+        Result = -1;
         _invisibleButton.gameObject.SetActive(false);
         _justDoItPanel.SetActive(false);
 
@@ -160,4 +161,9 @@ public class ResultManager : MonoBehaviour
         _invisibleButton.gameObject.SetActive(true);
     }
 
+    public void Reset()
+    {
+        JustDidIt = false;
+        JustDoIt = false;
+    }
 }

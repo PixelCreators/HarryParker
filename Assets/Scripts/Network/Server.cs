@@ -8,6 +8,7 @@ public class MyMsgTypes
     public static short Decision = 1001;
     public static short PlayerResult = 1002;
     public static short EndVoting = 1003;
+    public static short ResetClients = 1004;
 };
 
 
@@ -16,6 +17,7 @@ public class Server : MonoBehaviour
     public static Server Instance;
     
     public bool JustDoIt;
+    int votingNumber;
 
     List<long> Players;
 
@@ -51,32 +53,53 @@ public class Server : MonoBehaviour
 
         playersVoted++;
         votingOptions[pr.Result]++;
+
         JustDoIt = pr.JustDoIt;
-        //DebugConsole.Instance.PrintString("JustDoIT: " + pr.JustDoIt.ToString() + "Result: " + pr.Result.ToString() + "PlayerNumber: " + pr.PlayerID.ToString());
+        if (JustDoIt)
+        {
+            EndVoting();
+            DecisionDisplay.ChooseDecision(pr.Result);
+        }
+            //DebugConsole.Instance.PrintString("JustDoIT: " + pr.JustDoIt.ToString() + "Result: " + pr.Result.ToString() + "PlayerNumber: " + pr.PlayerID.ToString());
     }
     
 
     public IEnumerator Voting()
     {
+        votingNumber++;
         var numberOfPlayers = NetworkServer.connections.Count - 1;
         votingOptions = new int[lastMsg.Decisions.Length - 1];
 
         while (true)
         {
-            if (playersVoted >= numberOfPlayers)
+            if (votingNumber == 3)
+            {
+                DecisionDisplay.EnableMainPlayerDecisions();
+                JustDoIt = true;
+                EndVoting();
+                JustDoIt = false;
+                Debug.Log("Pass voting");
+                votingNumber = 0;
+                yield break;
+            }
+            if (playersVoted >= numberOfPlayers && !JustDoIt)
             {
                 break;
+            }
+            if (JustDoIt)
+            {
+                votingNumber = 0;
+                yield break;
             }
             yield return null;
         }
         
         for(int i = 0; i < lastMsg.Decisions.Length - 1; i++)
         {
-            Debug.Log(votingOptions[i]);
-            Debug.Log(numberOfPlayers);
             if(votingOptions[i] == numberOfPlayers)
             {
                 DecisionDisplay.ChooseDecision(i);
+                votingNumber = 0;
                 yield break;
             }
         }
@@ -103,9 +126,13 @@ public class Server : MonoBehaviour
         NetworkServer.SendToAll(MyMsgTypes.EndVoting, msg);
     }
 
+    public void ResetClients()
+    {
+        NetworkServer.SendToAll(MyMsgTypes.ResetClients, new EndVotingMessage());
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-            EndVoting();
+
     }
 }

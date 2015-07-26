@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DecisionDisplay : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class DecisionDisplay : MonoBehaviour
     private List<GameObject> activeButtons = new List<GameObject>() ;
     public Decision[] Decisions;
     private int _pendingDecision;
-
+    public static List<Button> newButtons;
     public static event Action DecisionDisplayed;
     public static event Action<int, int> DecisionChosen;
 
@@ -38,6 +39,7 @@ public class DecisionDisplay : MonoBehaviour
     public static void TriggerDecision(int decisionId)
     {
         _instance._pendingDecision = decisionId;
+        newButtons = new List<Button>();
         if (_instance.gameObject.activeInHierarchy)
         {
             return;
@@ -52,6 +54,8 @@ public class DecisionDisplay : MonoBehaviour
             var newButton = Instantiate(_instance.ButtonPrefab);
             newButton.GetComponent<DecisionButton>().Init(option, i);
             newButton.transform.SetParent(_instance.ButtonPanel);
+            newButton.GetComponent<Button>().interactable = false;
+            newButtons.Add(newButton.GetComponent<Button>());
             _instance.activeButtons.Add(newButton);
             _instance.gameObject.SetActive(true);
         }
@@ -84,6 +88,14 @@ public class DecisionDisplay : MonoBehaviour
         foreach (var activeButton in _instance.activeButtons)
         {
             Destroy(activeButton);
+        }
+    }
+
+    public static void EnableMainPlayerDecisions()
+    {
+        foreach(var button in newButtons)
+        {
+            button.interactable = true;
         }
     }
 }

@@ -53,7 +53,7 @@ public class DecisionDisplay : MonoBehaviour
             _instance.ButtonPanel.GetComponent<ButtonPanel>().zero_3.gameObject.SetActive(false);
         }
 
-        if(decisionId == 2)
+        if(decisionId == 3)
         {
             _instance.ButtonPanel.GetComponent<ButtonPanel>().zero_3.gameObject.SetActive(true);
         }
@@ -68,6 +68,8 @@ public class DecisionDisplay : MonoBehaviour
         }
 
         var decision = _instance.Decisions[decisionId];
+        Debug.Log(decision.Description);
+        Debug.Log(_instance.DescriptionText.name);
         _instance.DescriptionText.text = decision.Description;
         for (int i = 0; i < decision.Options.Length; i++)
         {
@@ -106,7 +108,8 @@ public class DecisionDisplay : MonoBehaviour
 
     public IEnumerator HidePanel()
     {
-        yield return new WaitForSeconds(5.0f);
+        if (!Server.Instance.mainPlayer)
+            yield return new WaitForSeconds(5.0f);
 
         foreach (var activeButton in _instance.activeButtons)
         {

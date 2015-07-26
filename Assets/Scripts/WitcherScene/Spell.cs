@@ -11,11 +11,11 @@ public class Spell : MonoBehaviour
 
     void OnEnable()
     {
-        StartCoroutine(Cor());
+        //StartCoroutine(Cor());
     }
 
-    IEnumerator Cor()
+    /*IEnumerator Cor()
     {
         
-    }
+    }*/
 }

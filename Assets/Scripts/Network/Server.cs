@@ -18,12 +18,13 @@ public class Server : MonoBehaviour
     
     public bool JustDoIt;
     int votingNumber;
-
+    public bool mainPlayer;
     List<long> Players;
     public ButtonPanel buttonPanel;
     int playersVoted;
     int[] votingOptions;
     DecisionMessage lastMsg;
+
 
     void Awake()
     {
@@ -72,13 +73,13 @@ public class Server : MonoBehaviour
 
     public IEnumerator Voting()
     {
+        mainPlayer = false;
         votingNumber++;
         var numberOfPlayers = NetworkServer.connections.Count - 1;
         votingOptions = new int[lastMsg.Decisions.Length - 1];
 
         for (int i = 0; i < 4; i++)
         {
-            Debug.Log(buttonPanel.name);
             buttonPanel.votes[i] = 0;
         }
 
@@ -87,6 +88,7 @@ public class Server : MonoBehaviour
             if (votingNumber == 3)
             {
                 DecisionDisplay.EnableMainPlayerDecisions();
+                mainPlayer = true;
                 JustDoIt = true;
                 EndVoting();
                 JustDoIt = false;

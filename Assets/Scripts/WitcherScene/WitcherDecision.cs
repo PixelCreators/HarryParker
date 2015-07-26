@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class WitcherDecision : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class WitcherDecision : MonoBehaviour
             return;
         }
 
+        StartCoroutine(StartEnc(option));
+    }
+
+    private IEnumerator StartEnc(int option)
+    {
+        yield return new WaitForSeconds(2);
         switch (option)
         {
             case 0:

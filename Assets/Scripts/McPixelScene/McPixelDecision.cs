@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 public class McPixelDecision : MonoBehaviour
 {
     public int decisionId;
@@ -24,6 +25,12 @@ public class McPixelDecision : MonoBehaviour
         {
             return;
         }
+        StartCoroutine( GetValue(decision));
+    }
+
+    private IEnumerator GetValue(int decision)
+    {
+        yield return new WaitForSeconds(2);
         switch (decision)
         {
             case 0:

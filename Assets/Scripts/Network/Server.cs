@@ -20,7 +20,7 @@ public class Server : MonoBehaviour
     int votingNumber;
 
     List<long> Players;
-
+    public ButtonPanel buttonPanel;
     int playersVoted;
     int[] votingOptions;
     DecisionMessage lastMsg;
@@ -33,10 +33,13 @@ public class Server : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+        buttonPanel = FindObjectOfType<ButtonPanel>();
     }
+    
 
     void Start()
     {
+        Debug.Log(buttonPanel.name);
         NetworkServer.Listen(1337);
 
         if (NetworkServer.active)
@@ -54,6 +57,9 @@ public class Server : MonoBehaviour
         playersVoted++;
         votingOptions[pr.Result]++;
 
+        buttonPanel.votes[pr.Result]++;
+
+
         JustDoIt = pr.JustDoIt;
         if (JustDoIt)
         {
@@ -69,6 +75,12 @@ public class Server : MonoBehaviour
         votingNumber++;
         var numberOfPlayers = NetworkServer.connections.Count - 1;
         votingOptions = new int[lastMsg.Decisions.Length - 1];
+
+        for (int i = 0; i < 4; i++)
+        {
+            Debug.Log(buttonPanel.name);
+            buttonPanel.votes[i] = 0;
+        }
 
         while (true)
         {

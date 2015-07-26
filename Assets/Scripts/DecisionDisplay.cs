@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,6 +41,22 @@ public class DecisionDisplay : MonoBehaviour
     {
         _instance._pendingDecision = decisionId;
         newButtons = new List<Button>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            _instance.ButtonPanel.GetComponent<ButtonPanel>().votes[i] = 0;
+        }
+
+        if(decisionId == 1)
+        {
+            _instance.ButtonPanel.GetComponent<ButtonPanel>().zero_3.gameObject.SetActive(false);
+        }
+
+        if(decisionId == 2)
+        {
+            _instance.ButtonPanel.GetComponent<ButtonPanel>().zero_3.gameObject.SetActive(true);
+        }
+
         if (_instance.gameObject.activeInHierarchy)
         {
             return;
@@ -74,17 +91,25 @@ public class DecisionDisplay : MonoBehaviour
 
     public static void ChooseDecision(int decision)
     {
-        _instance.gameObject.SetActive(false);
+        newButtons[decision].interactable = true;
+        newButtons[decision].Select();
         if (DecisionChosen != null)
         {
             DecisionChosen(_instance._pendingDecision, decision);
         }
+        _instance.StartCoroutine(_instance.HidePanel());
+    }
+
+    public IEnumerator HidePanel()
+    {
+        yield return new WaitForSeconds(5.0f);
+
         foreach (var activeButton in _instance.activeButtons)
         {
             Destroy(activeButton);
         }
+        _instance.gameObject.SetActive(false);
     }
-
     public static void EnableMainPlayerDecisions()
     {
         foreach(var button in newButtons)

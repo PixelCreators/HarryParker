@@ -74,12 +74,8 @@ public class WitcherEncounter : MonoBehaviour
 
     public void StartWitcherEncounter()
     {
-        StartCoroutine(WitcherEncounterCoroutine());
-    }
+        WitcherMotor.speed = 4.5f;
+        WitcherMotor.DEBUGTarget = PlayerPosition.PlayerTransform;
 
-    private IEnumerator WitcherEncounterCoroutine()
-    {
-        Debug.Log("WitcherEncounterStarted");
-        yield return null;
     }
 }

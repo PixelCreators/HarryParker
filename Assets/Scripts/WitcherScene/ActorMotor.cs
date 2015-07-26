@@ -9,6 +9,8 @@ public class ActorMotor : MonoBehaviour
     public float speed = 3;
     private Vector3 target;
     private bool targetSet = false;
+    public bool Lusty;
+    public GameObject FuckedScreen;
 
     private void Update()
     {
@@ -35,6 +37,14 @@ public class ActorMotor : MonoBehaviour
         else
         {
             rigidbody.velocity = Vector2.zero;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            FuckedScreen.SetActive(true);
         }
     }
 

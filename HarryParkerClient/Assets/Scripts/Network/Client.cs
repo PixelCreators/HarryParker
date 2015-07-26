@@ -42,7 +42,7 @@ public class Client : MonoBehaviour
         NetworkClient.RegisterHandler(MsgType.Error, OnError);
         NetworkClient.RegisterHandler(MyMsgTypes.Decision, GetMessage);
         NetworkClient.RegisterHandler(MyMsgTypes.EndVoting, EndVoting);
-        NetworkClient.RegisterHandler(MyMsgTypes.ResetClients, ResetClients)
+        NetworkClient.RegisterHandler(MyMsgTypes.ResetClients, ResetClients);
     }
 
     public void OnConnected(NetworkMessage netMsg)

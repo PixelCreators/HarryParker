@@ -9,6 +9,7 @@ public class DecisionDisplay : MonoBehaviour
     private static DecisionDisplay _instance;
     public GameObject ButtonPrefab;
     public Transform ButtonPanel;
+    public Text DescriptionText;
     private List<GameObject> activeButtons = new List<GameObject>() ;
     public Decision[] Decisions;
     private int _pendingDecision;
@@ -65,9 +66,12 @@ public class DecisionDisplay : MonoBehaviour
         {
             DecisionDisplayed();
         }
-        for (int i = 0; i < _instance.Decisions[decisionId].Options.Length; i++)
+
+        var decision = _instance.Decisions[decisionId];
+        _instance.DescriptionText.text = decision.Description;
+        for (int i = 0; i < decision.Options.Length; i++)
         {
-            var option = _instance.Decisions[decisionId].Options[i];
+            var option = decision.Options[i];
             var newButton = Instantiate(_instance.ButtonPrefab);
             newButton.GetComponent<DecisionButton>().Init(option, i);
             newButton.transform.SetParent(_instance.ButtonPanel);

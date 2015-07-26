@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
     public int HP;
 
     public event Action Died;
+    //Arg is HP left
+    public event Action<int> DamageApplied;
     private bool _invincible;
 
     public void SetInvincible()
@@ -16,9 +18,12 @@ public class Enemy : MonoBehaviour
     public void ApplyDamage()
     {
         HP -= 1;
+        if (DamageApplied != null)
+        {
+            DamageApplied(HP);
+        }
         if (!_invincible && HP == 0 && Died != null)
         {
-            Debug.Log("Hulk Died");
             Died();
         }
     }

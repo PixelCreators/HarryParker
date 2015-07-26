@@ -8,6 +8,7 @@ public class ActorMotor : MonoBehaviour
     public Animator movementAnimator;
     public float speed = 3;
     private Vector3 target;
+    private bool targetSet = false;
 
     private void Update()
     {
@@ -15,6 +16,11 @@ public class ActorMotor : MonoBehaviour
         {
             target = DEBUGTarget.position;
         }
+        if (!targetSet)
+        {
+            return;
+        }
+
         var toTarget = target - transform.position;
         var dir = DirectionHelper.VecToDirection(toTarget);
         movementAnimator.SetInteger("Direction", (int) dir);
@@ -34,6 +40,7 @@ public class ActorMotor : MonoBehaviour
 
     public void MoveTo(Vector3 position)
     {
+        targetSet = true;
         target = position;
     }
 }

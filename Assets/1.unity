@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ca74a39ecace246b1b0241006a2e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 30b73450c57638849bb897e55aa275f2, type: 3}
+  Clip: {fileID: 8300000, guid: 21abb0bc00e502c4a81470b57bba9252, type: 3}
 --- !u!61 &176794688
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -745,7 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ca74a39ecace246b1b0241006a2e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 30b73450c57638849bb897e55aa275f2, type: 3}
+  Clip: {fileID: 8300000, guid: 3af3bf814d2546646b9121ef70d9fcdb, type: 3}
 --- !u!61 &180302640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2627,7 +2627,7 @@ MeshRenderer:
   m_GameObject: {fileID: 545374891}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 951155111bbf0284ba9db0771887e625, type: 2}
   m_SubsetIndices: 
@@ -2921,6 +2921,8 @@ MonoBehaviour:
   Hulk: {fileID: 1738254645}
   ChargingHulk: {fileID: 1304261832}
   SmashingHulk: {fileID: 2021524179}
+  HulkSmash: {fileID: 8300000, guid: a520c2b037e7b2f469f3ec8128fd737c, type: 3}
+  HulkMusic: {fileID: 8300000, guid: 095655e8ff8740e4e80a30b8f22b76c4, type: 3}
 --- !u!1 &648734441
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,7 +4278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmashScream: {fileID: 977774860}
   HulkSmash: {fileID: 0}
-  DeathMetal: {fileID: 8300000, guid: 30b73450c57638849bb897e55aa275f2, type: 3}
+  DeathMetal: {fileID: 8300000, guid: 095655e8ff8740e4e80a30b8f22b76c4, type: 3}
   AnimationHolder: {fileID: 212829696}
   DeadSprite: {fileID: 1384228594}
 --- !u!1 &1000098093
@@ -8525,7 +8527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ca74a39ecace246b1b0241006a2e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 30b73450c57638849bb897e55aa275f2, type: 3}
+  Clip: {fileID: 8300000, guid: d2fe451f8c14feb4a94d64215ed3d175, type: 3}
 --- !u!61 &1837463863
 BoxCollider2D:
   m_ObjectHideFlags: 0

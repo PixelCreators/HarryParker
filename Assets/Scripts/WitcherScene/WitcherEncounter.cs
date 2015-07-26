@@ -7,6 +7,7 @@ public class WitcherEncounter : MonoBehaviour
     public Witch Triss;
     public ActorMotor WitcherMotor;
     public Witch Yen;
+    public AudioClip WitcherFightMusic;
 
     public GameObject Door;
 
@@ -53,6 +54,7 @@ public class WitcherEncounter : MonoBehaviour
 
     private IEnumerator StartWitchEncounter(Witch attacking, Witch leaving)
     {
+        MyAudio.PlayBackgroundMusic(WitcherFightMusic);
         var leavingTransform = leaving.transform;
         var witcherTransform = WitcherMotor.transform;
         WitcherMotor.MoveTo(leaving.transform.position);
@@ -74,8 +76,9 @@ public class WitcherEncounter : MonoBehaviour
 
     public void StartWitcherEncounter()
     {
+        MyAudio.PlayBackgroundMusic(WitcherFightMusic);
         WitcherMotor.speed = 4.5f;
         WitcherMotor.DEBUGTarget = PlayerPosition.PlayerTransform;
-
+        WitcherMotor.MoveTo(Vector3.zero);
     }
 }

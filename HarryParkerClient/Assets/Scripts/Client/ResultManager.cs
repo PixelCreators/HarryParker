@@ -25,6 +25,7 @@ public class ResultManager : MonoBehaviour
 
     void Start ()
     {
+        Screen.sleepTimeout = 0;
         PlayerID = ((long)Random.Range(0, int.MaxValue) << 32) | (long)Random.Range(0, int.MaxValue);
         Result = -1;
 

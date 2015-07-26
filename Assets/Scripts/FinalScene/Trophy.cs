@@ -6,6 +6,8 @@ public class Trophy : MonoBehaviour
     public GameObject ChargingHulk;
     public GameObject SmashingHulk;
     public const float RushTime = 1f;
+    public AudioClip HulkSmash;
+    public AudioClip HulkMusic;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -18,6 +20,8 @@ public class Trophy : MonoBehaviour
 
     IEnumerator HulkCoroutine()
     {
+        AudioSource.PlayClipAtPoint(HulkMusic, Vector3.zero);
+        MyAudio.PlayBackgroundMusic(HulkMusic);
         float progress = 0;
         float start = Time.time;
         Vector3 startPosition = Hulk.position;

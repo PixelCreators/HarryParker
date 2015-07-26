@@ -85,7 +85,7 @@ public class Server : MonoBehaviour
 
         while (true)
         {
-            if (votingNumber == 3)
+            if (votingNumber == 4)
             {
                 DecisionDisplay.EnableMainPlayerDecisions();
                 mainPlayer = true;

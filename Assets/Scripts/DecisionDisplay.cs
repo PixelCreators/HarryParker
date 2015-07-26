@@ -10,6 +10,7 @@ public class DecisionDisplay : MonoBehaviour
     public GameObject ButtonPrefab;
     public Transform ButtonPanel;
     public Text DescriptionText;
+    public Image DecisionSprite;
     private List<GameObject> activeButtons = new List<GameObject>() ;
     public Decision[] Decisions;
     private int _pendingDecision;
@@ -71,6 +72,7 @@ public class DecisionDisplay : MonoBehaviour
         Debug.Log(decision.Description);
         Debug.Log(_instance.DescriptionText.name);
         _instance.DescriptionText.text = decision.Description;
+        _instance.DecisionSprite.sprite = decision.sprite;
         for (int i = 0; i < decision.Options.Length; i++)
         {
             var option = decision.Options[i];

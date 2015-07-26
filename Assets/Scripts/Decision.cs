@@ -9,4 +9,5 @@ public class Decision
     [TextArea]
     public string Description;
     public string[] Options;
+    public Sprite sprite;
 }

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+
 public class IceCreamEncounter : MonoBehaviour
 {
-    public Transform ProgressBar;
+    public Image ProgressBar;
     public float duration = 15f;
     public HulkAI Hulk;
 
@@ -22,7 +24,7 @@ public class IceCreamEncounter : MonoBehaviour
             HulkEncounter.Finish();
             return;
         }
-        ProgressBar.localScale = new Vector3(ProgressBar.localScale.x, 1 - progress);
+        ProgressBar.fillAmount = 1 - progress;
     }
 
     void OnDisable()

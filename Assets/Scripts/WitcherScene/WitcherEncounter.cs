@@ -4,7 +4,6 @@ using UnityEngine;
 public class WitcherEncounter : MonoBehaviour
 {
     private static WitcherEncounter _instance;
-    public GameObject Portal;
     public Witch Triss;
     public ActorMotor WitcherMotor;
     public Witch Yen;
@@ -27,7 +26,7 @@ public class WitcherEncounter : MonoBehaviour
 
     public void StartYenEncounter()
     {
-        StartCoroutine(_instance.YenEncounterCoroutine());
+        StartCoroutine(YenEncounterCoroutine());
     }
 
     private IEnumerator YenEncounterCoroutine()
@@ -37,7 +36,7 @@ public class WitcherEncounter : MonoBehaviour
 
     public void StartTrissEncounter()
     {
-        StartCoroutine(_instance.TrissEncounterCoroutine());
+        StartCoroutine(TrissEncounterCoroutine());
     }
 
     private IEnumerator TrissEncounterCoroutine()

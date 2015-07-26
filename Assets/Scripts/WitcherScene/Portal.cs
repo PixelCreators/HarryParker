@@ -17,13 +17,4 @@ public class Portal : MonoBehaviour
         P3.Rotate(new Vector3(0, 0, 1), P3Speed*Time.deltaTime);
     }
 
-    public void Trigger()
-    {
-        
-    }
-
-    private IEnumerator PortalCoroutine()
-    {
-        yield return null;
-    }
 }

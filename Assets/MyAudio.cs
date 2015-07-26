@@ -19,7 +19,9 @@ public class MyAudio : MonoBehaviour
 
     public static void PlayBackgroundMusic(AudioClip audioClip)
     {
+        Debug.Log("Play");
         Instance.Audio.Stop();
+        Debug.Log(audioClip.name);
         Instance.Audio.clip = audioClip;
         Instance.Audio.Play();
     }
